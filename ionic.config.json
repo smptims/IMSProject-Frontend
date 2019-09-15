@@ -1,0 +1,7 @@
+{
+  "name": "AdminNewUI",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

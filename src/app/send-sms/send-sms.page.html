@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row class="row title">
+    <ion-title color="secondary">SMS</ion-title>
+  </ion-row>
+
+  <div class="backgrondtable">
+    <ion-card-content class="ion-text-center mrg-btm--10">
+      <form class="mrg-btm--10">
+        <ion-item class="nopadh_tp border-btm">
+          <ion-label position="floating" class="font-12">Customer No</ion-label>
+
+
+
+          <ion-input class="nopadh_tp" type="text" name="m_number"></ion-input>
+        </ion-item>
+
+        <ion-item class="nopadh_tp border-btm">
+          <ion-label position="floating" class="font-12">Message(Max. 120 chars)</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+
+        <div class="text-center">
+          <button ion-button class="btn btn-rounded btn-success" type="submit">Send</button>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </div>
+</ion-content>

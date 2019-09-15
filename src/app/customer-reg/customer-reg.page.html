@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Customer Registration</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+      <span item-right><ion-icon name="arrow-round-back" (click) = "backToCustomerRegistrationDetails()"></ion-icon>
+      </span>
+      <ion-label position="floating" style="text-align:center" class="font-12"> <h2>Customer Registration</h2></ion-label>
+    <form class="mrg-btm--10" [formGroup]="customerRegForm" (submit)="createCustomerRegDetails(customerRegForm.value)">
+      <ion-item class="nopadh_tp border-btm">
+        <ion-label position="floating" class="font-12">Full Name</ion-label>
+        <ion-input class="nopadh_tp" type="text" formControlName="customer_name"></ion-input>
+      </ion-item>
+      <ion-item class="nopadh_tp border-btm">
+        <ion-label position="floating" class="font-12">Email</ion-label>
+        <ion-input class="nopadh_tp" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class="nopadh_tp border-btm">
+        <ion-label position="floating" class="font-12">Phone No</ion-label>
+        <ion-input class="nopadh_tp" type="number" formControlName="phone_no"></ion-input>
+      </ion-item>
+      <ion-item class="nopadh_tp border-btm">
+        <ion-label position="floating" class="font-12">Location</ion-label>
+        <ion-input class="nopadh_tp" type="text" formControlName="location"></ion-input>
+      </ion-item>
+  
+      <div class="text-center ion-margin-vertical">
+         <ion-button type="submit" color="secondary" shape="round" [disabled]="!customerRegForm.valid">
+          Save
+        </ion-button>
+      </div>
+  
+    </form>
+  </ion-content>
