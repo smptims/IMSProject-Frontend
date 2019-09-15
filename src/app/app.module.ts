@@ -15,6 +15,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { EmailProvider } from './send-mail/email.service';
 import { ImageProvider } from './send-mail/image.service'; 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,10 +23,10 @@ import { ImageProvider } from './send-mail/image.service';
     mode:'md'
   }), AppRoutingModule, ReactiveFormsModule, HttpClientModule ],
   providers: [
-    StatusBar,
+    StatusBar, File,
     FileOpener,IonApp, 
     SplashScreen, ErrorHandler, 
-    Camera, File,
+    Camera,
     EmailComposer,
     EmailProvider,
     ImageProvider,

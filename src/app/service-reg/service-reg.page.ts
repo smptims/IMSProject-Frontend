@@ -47,6 +47,7 @@ export class ServiceRegPage implements OnInit {
       this.commonService.presentToast('POST 1.2 : Facing some server issue')
     });
   }
+
   backToServiceregiterDetails() {
     this.router.navigate(['/service-dtl']);
   }

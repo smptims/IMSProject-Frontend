@@ -10,19 +10,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-label class="font-12">Customer Status</ion-label>
-  <ion-select [(ngModel)]="status" (ionChange)="customerUserOnStatus()">
-    <ion-select-option value="ALL">All</ion-select-option>
-    <ion-select-option value="ACTIVE">Active</ion-select-option>
-    <ion-select-option value="INACTIVE">Inactive</ion-select-option>
-  </ion-select>
+    <ion-label position="floating" class="font-12">Customer Status</ion-label>
+    <ion-select [(ngModel)]="status" [placeholder]="status" (ionChange)="customerUserOnStatus()">
+        <ion-select-option value="ALL">All</ion-select-option>
+        <ion-select-option value="ACTIVE">Active</ion-select-option>
+        <ion-select-option value="INACTIVE">Inactive</ion-select-option>
+      </ion-select> 
 
   <div class="backgrondtable">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
-
+    
     <form action="">
-
+      
       <input type="search" placeholder="Enter Customer No" (input)="onSearch()" [(ngModel)]="inputToSearch"
         [ngModelOptions]="{standalone: true}" />
       <i class="fa fa-search"></i>
@@ -38,8 +38,7 @@
             <p>Location: {{ item.location }}</p>
             <p>Status: {{ item.status }}</p>
           </ion-label>
-          <ion-toggle [checked]="item.status === 'ACTIVE'" slot="end" (ionChange)="updateCustomerUsers(item)">
-          </ion-toggle>
+          <ion-toggle [checked]="item.status === 'ACTIVE'" slot="end" (ionChange)="updateCustomerUsers(item)"></ion-toggle>
         </ion-item>
 
         <ion-item-options side="start">

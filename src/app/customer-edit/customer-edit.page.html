@@ -10,8 +10,9 @@
 </ion-header>
 
 <ion-content padding>
-    <span item-right><ion-icon name="arrow-round-back" (click) = "backToCustomerRegistrationDetails()"></ion-icon>
-    </span>
+
+  <span item-right><ion-icon name="arrow-round-back" (click) = "backToCustomerEditDetails()"></ion-icon></span>
+
   <form class="mrg-btm--10" [formGroup]="customerUserForm" (submit)="editCustomerUserSubmit(customerUserForm.value)">
     <ion-item class="nopadh_tp border-btm">
       <ion-label position="floating" class="font-12">Customer No</ion-label>

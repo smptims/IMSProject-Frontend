@@ -81,7 +81,7 @@ export const sideMenu = [
   },
   {
     title: 'Logout',
-    path: '/login',
+    path: '/smptims-home',
     icon: 'power'
   }
 ]

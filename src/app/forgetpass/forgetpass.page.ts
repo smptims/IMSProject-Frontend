@@ -58,7 +58,7 @@ export class ForgetpassPage implements OnInit {
           const navigationExtras: NavigationExtras = {
             state: userResp[0]
           };
-          this.router.navigate(["resetpassword"], navigationExtras)
+          this.router.navigate(["/resetpassword"], navigationExtras)
         } else {
           this.commonService.presentToast("Facing some server issues")
         }
@@ -68,6 +68,6 @@ export class ForgetpassPage implements OnInit {
     }
   }
   backToLoginpage() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/smptims-home']);
   }
 }
