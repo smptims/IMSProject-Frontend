@@ -57,5 +57,9 @@ export class CustomerEditPage implements OnInit {
   backToCustomerRegistrationDetails() {
     this.router.navigate(['/customer-dtl']);
   }
+
+  backToCustomerEditDetails() {
+    this.router.navigate(['/customer-dtl']);
+  }
 }
 

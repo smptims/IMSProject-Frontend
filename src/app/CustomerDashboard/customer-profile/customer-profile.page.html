@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Customer Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    
+  <div id="profile-bg"></div>
+  <div id="content">
+  
+    <div id="profile-info">
+      <div text-center>
+          <img id="profile-image"  src="/assets/logo/profile.png" style="width:120px;height:120px;" />   
+      </div>
+      
+         <h3 id="profile-name" class="ion-text-center">Costomer's Name</h3>
+           <div class="profilecontent">
+              <span id="profile-description">
+                <ion-list> 
+                  <ion-item-sliding *ngFor="let item of customerProfileDtls">
+                  <ion-item>
+                   <ion-label>
+                     <p>Customer Number      : {{ item.customer_no }}</p>
+                     <p>Customer Username    : {{ item.customer_name }}</p>
+                     <p>Email                : {{ item.email }}</p>
+                     <p>Phone No             : {{ item.phone_no }}</p>
+                     <p>Customer Status      : {{ item.status }}</p>
+                   </ion-label>
+                  </ion-item>
+                </ion-item-sliding>
+              </ion-list>
+            </span>
+           </div>
+          </div>
+        </div>
+  
+  </ion-content>

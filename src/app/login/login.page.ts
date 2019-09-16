@@ -21,8 +21,8 @@ export class LoginPage implements OnInit {
     private menuCtrl: MenuController
   ) {
     this.credentails = this.formBuilder.group({
-      username: ["SRS Travels", Validators.compose([Validators.required])],
-      password: ["78945", Validators.compose([Validators.required])]
+      username: ["", Validators.compose([Validators.required])],
+      password: ["", Validators.compose([Validators.required])]
     });
   }
 

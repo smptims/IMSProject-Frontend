@@ -11,16 +11,15 @@
   <form class="mrg-btm--10" [formGroup]="deviceStatusRptForm" (submit)="getDeviceDetails(deviceStatusRptForm.value)">
     <ion-item>
       <ion-label>Start Date</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" min="2019" max="2025" formControlName="start_dt">Start Date<br>
-      </ion-datetime>
+      <ion-datetime Placeholder="DD MMM YYYY" min="2019" max="2025" formControlName="start_dt">Start Date<br></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>End Date</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" min="2019" max="2025" formControlName="end_dt">End Date</ion-datetime>
+      <ion-datetime Placeholder="DD MMM YYYY" min="2019" max="2025" formControlName="end_dt">End Date</ion-datetime>
     </ion-item>
 
     <div class="text-center ion-margin-vertical">
-      <ion-button type="submit" color="secondary" shape="round" [disabled]="!deviceStatusRptForm.valid">
+      <ion-button type="submit" color="secondary" shape="round" [disabled]="!deviceStatusRptForm.valid" >
         Generate Report
       </ion-button>
     </div>

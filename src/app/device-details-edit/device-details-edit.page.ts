@@ -55,9 +55,11 @@ export class DeviceDetailsEditPage implements OnInit {
       this.commonService.presentToast('POST: Facing some server issue')
     });
   }
-  backToDeviceDetails() {
+
+  backToDeviceDetailsEdit() {
     this.router.navigate(['/device-details']);
   }
+
 }
 
 

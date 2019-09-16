@@ -62,6 +62,7 @@ export class ServiceEditPage implements OnInit {
       this.commonService.presentToast('POST 1.2 : Facing some server issue')
     });
   }
+
   backToServiceEditDetails() {
     this.router.navigate(['/service-dtl']);
   }

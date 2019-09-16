@@ -10,10 +10,9 @@
 </ion-header>
 
 <ion-content padding>
-    <span item-right><ion-icon name="arrow-round-back" (click) = "backToServiceEditDetails()"></ion-icon></span>
 
-    <ion-label position="floating" style="text-align:center" class="font-12"> <h2> Edit Service-Center </h2></ion-label>
-
+  <span item-right><ion-icon name="arrow-round-back" (click) = "backToServiceEditDetails()"></ion-icon></span>
+  
   <form class="mrg-btm--10" [formGroup]="serviceCenterUserForm"
     (submit)="editServiceCenterUsersSubmit(serviceCenterUserForm.value)">
 

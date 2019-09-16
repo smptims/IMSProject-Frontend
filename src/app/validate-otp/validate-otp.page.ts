@@ -7,14 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidateOtpPage implements OnInit {
 
-  public validateotp: any = {}
   constructor() { }
 
   ngOnInit() {
-  }
-
-  validateotpForm() {
-    // 
   }
 
 }

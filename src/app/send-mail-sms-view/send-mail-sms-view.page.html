@@ -3,9 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
-    </ion-title>
+    <ion-title><ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,15 +11,15 @@
   <ion-row class="row title">
     <ion-title color="secondary">Mail List</ion-title>
   </ion-row>
-  <ion-toolbar>
-    <ion-segment (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="camera">
-        <ion-icon name="camera"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="bookmark">
-        <ion-icon name="bookmark"></ion-icon>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+<ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="camera">
+      <ion-icon name="camera"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="bookmark">
+      <ion-icon name="bookmark"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
 
 </ion-content>
