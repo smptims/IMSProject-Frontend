@@ -1,58 +1,92 @@
 <ion-content>
+  <ion-grid class="background_login">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <div class="text-centered">
+          <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
 
-    <ion-grid class="background_login">
-        <ion-row>
-            <ion-col class="ion-text-center">
-                <div class="text-centered logo_position">
-                    <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
-                </div>
-            </ion-col>
-        </ion-row>
-  
-        <ion-row class="mrg-btm--10">
-            <ion-col>
-                <ion-card class="welcome-card">
-                    <ion-card-header class="padd-btm--10">
-                        <ion-card-title class="ion-text-center padd-btm--10">
-                            <h4 class="mrg-btm--10 ">Welcome to IMS</h4>
-                        </ion-card-title>
-                    </ion-card-header>
-  
-                    <ion-card-content >
-                        
-                      
-                      <ion-row>
-                        <ion-item no-lines class="ion-avatar-img">
-  
-                          <ion-item (click)="customerDashboard()" >
-                            <img src="/assets/logo/bus-travels.png"  style="width:75px;height:75px;">
-                          </ion-item>   
-                          <ion-item (click)="serviceCenterDashboard()" >
-                            <img src="/assets/logo/service-cen.png" style="width:75px;height:75px;">
-                          </ion-item>
-                          <ion-item (click)="adminDashboard()" >
-                              <img src="/assets/logo/Admin-icon.png" style="width:75px;height:75px;">
-                          </ion-item> 
-  
-                        </ion-item>
-                      </ion-row>    
-                      
-                    </ion-card-content>
-  
-                    <div class="text-center space">
-                        <div class="websiteadd text-center">
-                            <p class="ssptcolor mrg-tp--5 font-14 "><a class="ssptcolor font-weight-b text-decoration"
-                                    href="http://www.srimaruthitechnologies.com"><b>www.srimaruthitechnologies.com</b></a>
-                            </p>
-                            <hr class="websiteaddhr">
-                        </div>
-                    </div>
-  
-  
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-  
-  
-  </ion-content>
+    <ion-row class="mrg-btm--10">
+      <ion-col size="12">
+        <ion-card class="welcome-card" style="margin-top:10%;">
+          <ion-card-header class="padd-btm--10">
+            <h4 class="mrg-btm--10 ion-text-center">Welcome to IMS</h4>
+          </ion-card-header>
+          <ion-card-content class="ion-margin-top">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+                <ion-item lines="none" (click)="customerDashboard()">
+                  <img
+                    src="/assets/logo/bus-travels.png"
+                    style="height: 150px"
+                  />
+                </ion-item>
+                <p class="ion-text-center dashboard-title">Customer</p>
+              </ion-col>
+              <ion-col
+                size="6"
+                size-sm="6"
+                size-md="6"
+                size-lg="4"
+                size-xl="4"
+                size-xs="6"
+              >
+                <ion-item lines="none" (click)="serviceCenterDashboard()">
+                  <img
+                    src="/assets/logo/service-cen.png"
+                    style="height: 150px"
+                  />
+                </ion-item>
+                <p class="ion-text-center dashboard-title">Service Center</p>
+              </ion-col>
+              <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+                <ion-item lines="none" (click)="adminDashboard()">
+                  <img
+                    src="/assets/logo/Admin-icon.png"
+                    style="height: 150px"
+                  />
+                </ion-item>
+                <p class="ion-text-center dashboard-title">Admin</p>
+              </ion-col>
+              <!-- <ion-item no-lines class="ion-avatar-img">
+                <ion-item (click)="customerDashboard()">
+                  <img
+                    src="/assets/logo/bus-travels.png"
+                    style="width:75px;height:75px;"
+                  />
+                </ion-item>
+                <ion-item (click)="serviceCenterDashboard()">
+                  <img
+                    src="/assets/logo/service-cen.png"
+                    style="width:75px;height:75px;"
+                  />
+                </ion-item>
+                <ion-item (click)="adminDashboard()">
+                  <img
+                    src="/assets/logo/Admin-icon.png"
+                    style="width:75px;height:75px;"
+                  />
+                </ion-item>
+              </ion-item> -->
+            </ion-row>
+          </ion-card-content>
+          <div class="text-center" style="margin-top: 16px;">
+            <div class="websiteadd text-center">
+              <p class="ssptcolor mrg-tp--5 font-14 ">
+                <a
+                  class="ssptcolor font-weight-b text-decoration"
+                  href="http://www.srimaruthitechnologies.com"
+                >
+                  <b>www.srimaruthitechnologies.com</b>
+                </a>
+              </p>
+              <hr class="websiteaddhr" />
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
