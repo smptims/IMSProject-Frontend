@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
           this.commonService.presentToast(loginResp.ErrorMessage);
         } else {
           this.commonService.presentToast(loginResp.ErrorMessage);
+          this.menuCtrl.enable(true);
           this.router.navigate(["/admin-dashboard"]);
         }
       },
