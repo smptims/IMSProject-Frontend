@@ -6,50 +6,52 @@ import { Router } from '@angular/router';
 import { MenuController } from "@ionic/angular";
 
 @Component({
-  selector: 'app-servicecenter-login',
-  templateUrl: './servicecenter-login.page.html',
-  styleUrls: ['./servicecenter-login.page.scss'],
+  selector: "app-servicecenter-login",
+  templateUrl: "./servicecenter-login.page.html",
+  styleUrls: ["./servicecenter-login.page.scss"]
 })
 export class ServicecenterLoginPage implements OnInit {
-
   public servicecentercredentails: FormGroup;
-  
-  constructor(private database: DatabaseService, 
-			  private formBuilder: FormBuilder, 
-        private router: Router, 
-        private menuCtrl: MenuController,
-			  private commonService: CommonService) { 
-			  			  
-	  this.servicecentercredentails = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])]
-		})
-	}
 
-  ngOnInit() {
-  }
-
-  submit(formValue) {
-    this.database.serviceCenterIsValidUser(formValue).subscribe((serviceCenterloginResp: any) => {
-      console.log('my cust response:::::::\n', serviceCenterloginResp );
-      if (!serviceCenterloginResp.Success) {
-        this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
-      } else {
-        this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
-        console.log('my resp:::::::\n', serviceCenterloginResp + formValue)
-        this.menuCtrl.enable(true);
-        this.router.navigate(['/servicecenter-dashboard'])
-      }
-    }, err => {
-      this.commonService.presentToast(" Error while calling API");
+  constructor(
+    private database: DatabaseService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService,
+    private menuCtrl: MenuController
+  ) {
+    this.servicecentercredentails = this.formBuilder.group({
+      username: ["", Validators.compose([Validators.required])],
+      password: ["", Validators.compose([Validators.required])]
     });
   }
-  
+
+  ngOnInit() {}
+
+  submit(formValue) {
+    this.database.serviceCenterIsValidUser(formValue).subscribe(
+      (serviceCenterloginResp: any) => {
+        console.log("my cust response:::::::\n", serviceCenterloginResp);
+        if (!serviceCenterloginResp.Success) {
+          this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
+        } else {
+          this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
+          console.log("my resp:::::::\n", serviceCenterloginResp + formValue);
+          this.menuCtrl.enable(true);
+          this.router.navigate(["/servicecenter-dashboard"]);
+        }
+      },
+      err => {
+        this.commonService.presentToast(" Error while calling API");
+      }
+    );
+  }
+
   navToservicecenterForgetPassword() {
-    this.router.navigate(['/servicecenter-forgetpass'])
+    this.router.navigate(["/servicecenter-forgetpass"]);
   }
 
   createServiceCenterRegDetails() {
-    this.router.navigate(['/servicecenter-reg'])
+    this.router.navigate(["/servicecenter-reg"]);
   }
 }
