@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Device Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label position="floating" class="font-12">Device Status</ion-label>
+  <span item-right><ion-icon ios="ios-print" md="md-print" (click) = "createPDF()"></ion-icon></span>
+  
+  <ion-list class="status">
+    <ion-radio-group (ionChange)="deviceBasedOnStatus()" [(ngModel)]="status">
+      <ion-row class="ion-nowrap" style="overflow-x: scroll">
+        <ion-col *ngFor="let item of deviceStatusList" size="auto">
+          <ion-item lines="none">
+            <ion-label>{{item.title}}</ion-label>
+            <ion-radio slot="start" color="secondary" [value]="item.value" [checked]="status === item.value">
+            </ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+  </ion-list>
+
+  <div class="backgrondtable ion-margin-top">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+
+    <form action="">
+      <input type="search" placeholder="Veh. Reg. No" (input)="onSearch()" [(ngModel)]="inputToSearch"
+        [ngModelOptions]="{standalone: true}" />
+      <i class="fa fa-search"></i>
+    </form>
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of devices">
+        <ion-item>
+          <ion-label>
+            <h2>Serial No: {{ item.did_seq_no }}</h2>
+            <h3>Customer Name: {{ item.customer_no }}</h3>
+            <p>Device No: {{ item.device_no }}</p>
+            <p>Device Status: {{ item.status }}</p>
+            <p>Vehical Reg No: {{ item.vehicle_regd_no }}</p>
+          </ion-label>
+          <ion-toggle *ngIf="item.status === 'ACTIVE' || item.status === 'INACTIVE'"
+            [checked]="item.status === 'ACTIVE' ? true: false" slot="end" (ionChange)="updateDeviceDetail(item)">
+          </ion-toggle>
+        </ion-item>
+
+        <ion-item-options side="start">
+          <ion-item-option color="secondary" (click)="navToDeviceDtlsEdit(item)">Edit </ion-item-option>
+          <ion-item-option color="warning" (click)="navToDeviceDtlsEdit(item)">Track </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteDeviceDetail(item.did_seq_no)">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <a (click)="navToDeviceDtlsCreate()">
+      <ion-fab-button color="secondary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </a>
+  </ion-fab>
+</ion-content>

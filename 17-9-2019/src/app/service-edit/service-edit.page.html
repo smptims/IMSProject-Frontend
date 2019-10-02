@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Service Center - Edit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <span item-right><ion-icon name="arrow-round-back" (click) = "backToServiceEditDetails()"></ion-icon></span>
+  
+  <form class="mrg-btm--10" [formGroup]="serviceCenterUserForm"
+    (submit)="editServiceCenterUsersSubmit(serviceCenterUserForm.value)">
+
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Service Serial No.</ion-label>
+      <ion-input class="nopadh_tp" type="number" formControlName="sc_seq_no"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Employ No.</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="sc_emp_no"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">User Name</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Full Name</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="customer_name"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Company Name</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="company_name"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Password</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="password"></ion-input>
+    </ion-item>
+   <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Email</ion-label>
+      <ion-input class="nopadh_tp" type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Phone No</ion-label>
+      <ion-input class="nopadh_tp" type="number" formControlName="phone_no"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Full Address</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Location</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="location"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">PIN Code</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="pincode_zip"></ion-input>
+    </ion-item>
+    <ion-item class="nopadh_tp border-btm">
+      <ion-label position="floating" class="font-12">Contry</ion-label>
+      <ion-input class="nopadh_tp" type="text" formControlName="country"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating" class="font-12">User Status</ion-label>
+        <ion-select formControlName="status">
+            <ion-select-option value="ACTIVE">Active</ion-select-option>
+            <ion-select-option value="INACTIVE">Inactive</ion-select-option> 
+        </ion-select>
+    </ion-item> 
+
+    <div class="text-center ion-margin-vertical">
+      <ion-button type="submit" color="secondary" shape="round" [disabled]="!serviceCenterUserForm.valid">
+        Save
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

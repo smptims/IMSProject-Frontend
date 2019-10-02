@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from '../../services/database/database.service';
 import { CommonService } from '../../services/common/common.service';
 import { Router } from '@angular/router';
-
+import { MenuController } from "@ionic/angular";
 
 @Component({
   selector: 'app-servicecenter-login',
@@ -16,7 +16,8 @@ export class ServicecenterLoginPage implements OnInit {
   
   constructor(private database: DatabaseService, 
 			  private formBuilder: FormBuilder, 
-			  private router: Router, 
+        private router: Router, 
+        private menuCtrl: MenuController,
 			  private commonService: CommonService) { 
 			  			  
 	  this.servicecentercredentails = this.formBuilder.group({
@@ -36,6 +37,7 @@ export class ServicecenterLoginPage implements OnInit {
       } else {
         this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
         console.log('my resp:::::::\n', serviceCenterloginResp + formValue)
+        this.menuCtrl.enable(true);
         this.router.navigate(['/servicecenter-dashboard'])
       }
     }, err => {
@@ -50,5 +52,4 @@ export class ServicecenterLoginPage implements OnInit {
   createServiceCenterRegDetails() {
     this.router.navigate(['/servicecenter-reg'])
   }
-
 }

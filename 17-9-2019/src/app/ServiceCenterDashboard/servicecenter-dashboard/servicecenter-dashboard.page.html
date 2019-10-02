@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+   <ion-row class="row title">
+    <ion-title color="secondary">Service Center Dashboard</ion-title>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col>
+      <ion-card no-margin no-margin>
+        <ion-card-content mode class="card-style bg-colorC1">
+          <div class="verticalaligncenter bg-colorC1">
+            <ion-label class="text-dark">Device Details</ion-label>
+            <ion-badge class="badgesISMU"><a (click)="navToInstallDeviceDetails()">30</a></ion-badge>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row>
+    <ion-col>
+      <ion-card no-margin no-margin>
+        <ion-card-content mode class="card-style bg-colorC2">
+          <div class="verticalaligncenter">
+            <ion-label class="text-dark">Customers/Travels</ion-label>
+            <ion-badge class="badgesISMU"><a (click)="navToCustomerUsers()">25</a></ion-badge>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card no-margin no-margin>
+        <ion-card-content mode class="card-style bg-colorC3">
+          <div class="verticalaligncenter">
+            <ion-label class="text-dark">Service Center Users</ion-label>
+            <ion-badge class="badgesISMU"><a (click)="navToServiceCenterDetails()">05</a></ion-badge>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row> -->
+
+  <ion-row>
+    <ion-col>
+      <ion-card no-margin no-margin>
+        <ion-card-content mode class="card-style bg-colorC2">
+          <div class="verticalaligncenter">
+            <ion-label class="text-dark">Daily Reports</ion-label>
+            <ion-badge class="badgesISMU"><a (click)="navToServiceCenterDailyReports()">12</a></ion-badge>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+      <div class="tabs">
+        <!-- <div class="tab">
+          <a (click)="navToSendMailFooter()" class="tab-link">
+          <ion-icon name="mail"></ion-icon>
+          <div class="label">Mail</div>
+          </a>
+        </div> 
+        <div class="tab">
+          <a  (click)="navToCustomerProfileFooter()"  class="tab-link">
+          <ion-icon name="person"></ion-icon>
+          <div class="label">Profile</div>
+          </a>
+        </div> -->
+        <div class="tab">
+            <a  (click)="navToInstallDeviceDetails()" class="tab-link">
+            <ion-icon name="list-box"></ion-icon>
+            <div class="label">Device Details</div>
+            </a>
+          </div>
+        <div class="tab">
+          <a  (click)="navToServiceCenterDashboardFooter()" class="tab-link">
+          <ion-icon name="home"></ion-icon>
+          <div class="label">Home</div></a>
+        </div>
+        
+        <div class="tab">
+          <a  (click)="navToReferTravelFooter()" class="tab-link">
+          <ion-icon name="car"></ion-icon>
+          <div class="label">Refer Travel</div>
+          </a>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>  

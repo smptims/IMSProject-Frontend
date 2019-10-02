@@ -1,0 +1,42 @@
+// playground requires you to assign document definition to a variable called dd
+let array = [
+      {
+      "did_seq_no": 1,
+      "pcsd_seq_no": 101,
+      "customer_no": 4444,
+      "device_no": "8081",
+      "vehicle_regd_no": "AP51BL8081",
+      "vehicle_location": "Tirupati",
+      "installed_by_sc_emp_no": "6464",
+      "installed_date_time": "2019-08-16T18:30:00.000Z",
+      "installation_verified_by": "65464",
+      "status": "REQUEST",
+      "rec_create_dt": "2019-08-22T18:30:00.000Z",
+      "rec_create_user": "root",
+      "rec_updt_dt": "2019-08-31T19:11:38.000Z",
+      "rec_updt_user": "smptims@localhost",
+      "warranty_dt": null
+    }, { "did_seq_no": 7, "pcsd_seq_no": 101, "customer_no": 4444, "device_no": "8084", "vehicle_regd_no": "AP51BL8084", "vehicle_location": "Tirupati", "installed_by_sc_emp_no": "6464", "installed_date_time": "2019-08-18T18:30:00.000Z", "installation_verified_by": "65464", "status": "ACTIVE", "rec_create_dt": "2019-08-24T04:14:35.000Z", "rec_create_user": "smptims@localhost", "rec_updt_dt": "2019-08-31T19:19:07.000Z", "rec_updt_user": "smptims@localhost", "warranty_dt": null }]
+    let dataToPrint = [];
+    for (let i = 0; i < array.length; i++) {
+      dataToPrint.push([array[i].did_seq_no,array[i].customer_no,array[i].device_no,array[i].vehicle_regd_no,])
+    }
+    console.log(dataToPrint);
+var dd = {
+	content: [
+    {
+      layout: 'lightHorizontalLines', // optional
+      table: {
+        // headers are automatically repeated if the table spans over multiple pages
+        // you can declare how many rows should be treated as headers
+        headerRows: 1,
+        widths: [ '*', 'auto', 100, '*' ],
+
+        body: [
+          [ 'Seq No', 'Cust No', 'Dev No', 'Vech No' ]
+        ].concat(dataToPrint)
+      }
+    }
+  ]
+	
+}

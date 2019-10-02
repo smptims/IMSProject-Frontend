@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+       Device Details-Create
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>  
+
+	<span item-right><ion-icon name="arrow-round-back" (click) = "backToDeviceDetails()"></ion-icon></span>
+
+    <ion-label position="floating" style="text-align:center" class="font-12"> <h2>ADD Device</h2></ion-label>
+    <div class="backgrondtable">
+	  <ion-card-content class="ion-text-center mrg-btm--10">     
+      <form class="mrg-btm--10" [formGroup]="createDeviceDetailsForm" 
+		  (submit)="createDeviceDetailSubmit(createDeviceDetailsForm.value)"> 
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">PCSD Seq No</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="pcsd_seq_no"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Customer No</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="customer_no"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Device No</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="device_no"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Vehical Reg. No</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="vehicle_regd_no"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Vehical Location</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="vehicle_location"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Installed by Ser. Emp. No</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="installed_by_sc_emp_no"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Installed Date</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="installed_date_time"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Installed Verified By</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="installation_verified_by"></ion-input>
+			  </ion-item>
+
+			  <ion-item class="nopadh_tp border-btm">
+				<ion-label position="floating" class="font-12">Warranty Date</ion-label>
+				<ion-input class="nopadh_tp" type="text" formControlName="warrenty_dt"></ion-input>
+			  </ion-item>
+
+        <ion-item>
+            <ion-label position="floating" class="font-12">Device Status</ion-label>
+            <ion-select formControlName="status">
+                <ion-select-option value="DELIVERED">Delivered</ion-select-option>
+                <ion-select-option value="REQUEST">Send Request to Install</ion-select-option>
+                <ion-select-option value="READY">Ready to install</ion-select-option>
+                <ion-select-option value="INSTALLED">Installed</ion-select-option>
+                <ion-select-option value="ACTIVE">Active</ion-select-option>
+                <ion-select-option value="INACTIVE">Inactive</ion-select-option> 
+            </ion-select>
+          </ion-item>  
+			  
+
+        <div class="text-center ion-margin-vertical">
+          <ion-button type="submit" color="secondary" shape="round" [disabled]="!createDeviceDetailsForm.valid">
+            Create
+          </ion-button>
+        </div>
+
+
+		  </form> 
+  
+	  </ion-card-content>
+	</div>
+</ion-content>

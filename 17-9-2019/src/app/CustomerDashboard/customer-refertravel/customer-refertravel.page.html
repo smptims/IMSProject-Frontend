@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Refer Travels</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <div class="backgrondtable">
+      <ion-card-content class="ion-text-center mrg-btm--10">
+        <form class="mrg-btm--10"[formGroup]="referTravelsForm" (submit)="referTravelsFormSubmit(referTravelsForm.value)">
+  
+            <ion-item class="nopadh_tp border-btm">
+              <ion-label position="floating" class="font-12">Mail ID</ion-label>
+                <ion-input class="nopadh_tp" type="email" formControName="email" name="Email"></ion-input>
+            </ion-item>
+  
+            <ion-item class="nopadh_tp border-btm">
+              <ion-label position="floating" class="font-12">Phone No</ion-label>
+              <ion-input class="nopadh_tp" type="number" formControName="phone_no" name="Phone no"></ion-input>
+            </ion-item>
+  
+            <ion-item class="nopadh_tp border-btm">
+                <ion-label position="floating" class="font-12">Location</ion-label>
+                <ion-input class="nopadh_tp" type="text" formControName="location" name="location"></ion-input>
+              </ion-item>
+  
+            <div class="text-center">
+                <ion-button type="submit" color="secondary" shape="round" [disabled]="!referTravelsForm.valid">
+                    Save
+                  </ion-button>
+            </div>
+           </form>  
+      </ion-card-content>  
+    </div>
+  </ion-content>
+  

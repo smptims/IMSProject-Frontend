@@ -1,0 +1,61 @@
+<ion-content>
+  <ion-grid class="background_login">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <div class="text-centered logo_position">
+          <ion-img src="/assets/logo/smpt_logo.png" class=""></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="mrg-btm--10">
+      <ion-col>
+        <ion-card class="welcome-card">
+          <ion-card-header class="padd-btm--10">
+            <ion-card-title class="ion-text-center padd-btm--10">
+                <span item-left><ion-icon name="arrow-round-back" (click) = "backToLoginpage()"></ion-icon></span>
+              <h4 class="mrg-btm--10">Generate OTP & Verify OTP</h4>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="ion-text-center mrg-btm--10" *ngIf="!otpStatus">
+            <form class="mrg-btm--10" [formGroup]="mobileNumberForm" (submit)="sendOTP(mobileNumberForm.value)">
+              <ion-item class="nopadh_tp border-btm">
+                <ion-label position="floating" class="font-12">Mobile</ion-label>
+                <ion-input class="nopadh_tp" type="tel" formControlName="mobile">
+                </ion-input>
+              </ion-item>
+              <div class="text-center ion-margin-vertical">
+                <ion-button type="submit" color="secondary" [disabled]="!mobileNumberForm.valid" shape="round">Generate
+                  OTP</ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+          <ion-card-content class="ion-text-center mrg-btm--10" *ngIf="otpStatus">
+            <form class="mrg-btm--10" [formGroup]="forgetPasswordForm" (submit)="confirmOTP(forgetPasswordForm.value)">
+              <ion-item class="nopadh_tp border-btm">
+                <ion-label position="floating" class="font-12">OTP</ion-label>
+                <ion-input class="nopadh_tp" type="tel" formControlName="otp">
+                </ion-input>
+              </ion-item>
+              <ion-item class="nopadh_tp border-btm">
+                <ion-label position="floating" class="font-12">Admin ID</ion-label>
+                <ion-input class="nopadh_tp" type="text" formControlName="adminid">
+                </ion-input>
+              </ion-item>
+              <div class="text-center ion-margin-vertical">
+                <ion-button type="submit" color="secondary" shape="round" [disabled]="!forgetPasswordForm.valid">Confirm OTP & User</ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+          <div class="text-center">
+            <div class="websiteadd text-center">
+              <p class="ssptcolor mrg-tp--5 font-14 "><a class="ssptcolor font-weight-b text-decoration"
+                  href="http://www.srimaruthitechnologies.com"><b>www.srimaruthitechnologies.com</b></a></p>
+              <hr class="websiteaddhr">
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

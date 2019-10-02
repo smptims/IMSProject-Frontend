@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { apiConfigUrl } from "src/app/constants/constants";
 
 @Injectable({
@@ -10,7 +10,12 @@ export class DatabaseService {
   constructor(private http: HttpClient) { }
 
   headers() {
-    return { headers: { "Content-Type": "Application/json" } };
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'Application/json')
+    if (localStorage.getItem('x-access-token') !== undefined && localStorage.getItem('x-access-token') !== null) {
+      headers.append('token', localStorage.getItem('x-access-token'))
+    }
+    return { headers: headers };
   }
 
   /***************************************************************
@@ -38,7 +43,7 @@ export class DatabaseService {
   }
 
   updateUser(body: any) {
-    return this.http.put(this.configURL.ADMIN_USERS , body, this.headers());
+    return this.http.put(this.configURL.ADMIN_USERS, body, this.headers());
   }
 
   /***************************************************************
@@ -61,8 +66,8 @@ export class DatabaseService {
     return this.http.get(this.configURL.DEVICE_DETAILS, this.headers());
   }
 
-  getDeviceInstalledStatusDetails(idFromDate:any, idToDate: any) {
-    return this.http.get(this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate +"/" + idToDate, this.headers());
+  getDeviceInstalledStatusDetails(idFromDate: any, idToDate: any) {
+    return this.http.get(this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate + "/" + idToDate, this.headers());
   }
 
   getDeviceDetailsByID(idToGetData: any) {
@@ -82,14 +87,14 @@ export class DatabaseService {
     return this.http.delete(this.configURL.DEVICE_DETAILS + idToDelete, this.headers());
   }
 
-   /***************************************************************
-    ************************ ADMIN PROFILE DETAILS ******************
-    ****************************************************************/
+  /***************************************************************
+   ************************ ADMIN PROFILE DETAILS ******************
+   ****************************************************************/
 
-   getAdminProfileDetails(idToDisplay: any) {
+  getAdminProfileDetails(idToDisplay: any) {
     return this.http.get(this.configURL.ADMIN_USERS + idToDisplay, this.headers());
-   }
-  
+  }
+
   /***************************************************************
     ************* CUSTOMER REGISTRATION       ***************
     ****************************************************************/
@@ -128,11 +133,11 @@ export class DatabaseService {
     ************************ CUSTOMER PROFILE DETAILS ******************
     ****************************************************************/
 
-   getCustmomerProfileDetails(idToDisplay: any) {
+  getCustmomerProfileDetails(idToDisplay: any) {
     return this.http.get(this.configURL.CUST_USERS + idToDisplay, this.headers());
-   }
+  }
 
-   isCustomerUSerPresent(username) {
+  isCustomerUSerPresent(username) {
     return this.http.get(
       this.configURL.CUST_USERS + username,
       this.headers()
@@ -180,10 +185,10 @@ export class DatabaseService {
     return this.http.delete(this.configURL.SERVICE_CENTER_USERS + idToDelete, this.headers());
   }
 
- /* ***************************************************************
-    *************            REFER TRAVELS          ***************
-    *************************************************************** */ 
-  createReferTravels(body: any){
+  /* ***************************************************************
+     *************            REFER TRAVELS          ***************
+     *************************************************************** */
+  createReferTravels(body: any) {
     return this.http.put(this.configURL.REFER_TRAVELS, body, this.headers());
   }
 
@@ -192,11 +197,11 @@ export class DatabaseService {
     ************************ SERVICE CENTER PROFILE DETAILS ******************
     ****************************************************************/
 
-   getServiceCenterProfileDetails(idToDisplay: any) {
+  getServiceCenterProfileDetails(idToDisplay: any) {
     return this.http.get(this.configURL.SERVICE_CENTER_USERS + idToDisplay, this.headers());
-   }
+  }
 
-   isServiceCenterUSerPresent(username) {
+  isServiceCenterUSerPresent(username) {
     return this.http.get(
       this.configURL.SERVICE_CENTER_USERS + username,
       this.headers()
