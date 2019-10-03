@@ -15,7 +15,7 @@ export class CustomerProfilePage implements OnInit {
   
 
   public customerProfileDtls: Array<customerProfileType> = [];
-  public inputToSearch: number = 125;
+  public inputToSearch: number = 1;
   constructor(private databse: DatabaseService,
               private router: Router, 
               private commonService: CommonService, 

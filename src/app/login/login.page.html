@@ -12,9 +12,9 @@
       <form class="mrg-btm--10" [formGroup]="credentails" (submit)="submit(credentails.value)">
         <ion-item class="nopadh_tp border-btm">
           <ion-label position="floating" class="font-12">
-            User Id
+            User ID
           </ion-label>
-          <ion-input class="nopadh_tp" type="text" formControlName="username" name="userid">
+          <ion-input class="nopadh_tp" type="text" formControlName="username" name="User ID">
           </ion-input>
         </ion-item>
         <ion-item class="nopadh_tp border-btm">
@@ -29,14 +29,14 @@
             <ion-checkbox></ion-checkbox><span> Remember me</span>
           </p>
         </div>
-
+    <!--
         <div class="text-center">
           <button ion-button class="btn btn-rounded btn-success" type="submit">
             Login
           </button>
         </div>
-      </form>
-      <!-- <p *ngIf="isValidCred">Not a valid user</p>
+       </form>
+       <p *ngIf="isValidCred">Not a valid user</p>
             <p *ngIf="isError">Some error occured</p>
             <button
               ion-button
@@ -44,8 +44,8 @@
               (click)="createNewUser()"
             >
               Create User
-            </button> -->
-    </ion-card-content>
+            </button> 
+    </ion-card-content> -->
 
     <div class="text-center">
       <button ion-button class="btn btn-rounded btn-success" type="submit">Login</button>
@@ -55,7 +55,7 @@
     <!-- <p *ngIf="isValidCred">Not a valid user</p>
                         <p *ngIf="isError">Some error occured</p>
                         <button ion-button class="btn btn-rounded btn-success" (click)="createNewUser()">Create
-                            User</button> -->
+                            User</button>  -->
     </ion-card-content>
 
     <div class="text-center ion-margin-bottom">
@@ -73,8 +73,8 @@
         <hr class="websiteaddhr">
       </div>
     </div>
-    </ion-card>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
+   <!-- </ion-card>
+    </ion-col> 
+    </ion-row> -->
+  </ion-grid> 
 </ion-content>

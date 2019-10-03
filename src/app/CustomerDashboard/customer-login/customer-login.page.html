@@ -22,9 +22,9 @@
                         <form class="mrg-btm--10" [formGroup]="customercredentails" (submit)="submit(customercredentails.value)">
                             <ion-item class="nopadh_tp border-btm">
                                 <ion-label position="floating" class="font-12">User Id</ion-label>
-                                <ion-input class="nopadh_tp" type="text" formControlName="username" name="customer_name">
+                                <ion-input class="nopadh_tp" type="text" formControlName="username" name="User Id">
                                 </ion-input>
-                            </ion-item>
+                            </ion-item> 
                             <ion-item class="nopadh_tp border-btm">
                                 <ion-label position="floating" class="font-12">Password</ion-label>
                                 <ion-input class="nopadh_tp" type="password" formControlName="password" name="password">
@@ -47,7 +47,7 @@
                     <div class="text-center ion-margin-bottom">
                         <div class="ssptcolor mrg-tp--5 font-12" style="padding: 5px;">Signup 
                             <a class="ssptcolor text-decoration clickhere" tappable
-                                (click)="createCustomerRegDetails(customerRegForm.value)" style="font-weight: bold">
+                                (click)="createCustomerRegDetails()" style="font-weight: bold">
                                 Click here
                             </a>
                         </div>

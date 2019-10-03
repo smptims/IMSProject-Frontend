@@ -11,5 +11,7 @@ export class SendMailSmsViewPage implements OnInit {
 
   ngOnInit() {
   }
+  segmentChanged(formvalue){
 
+  }
 }
