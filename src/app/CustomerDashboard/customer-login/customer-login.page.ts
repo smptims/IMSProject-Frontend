@@ -26,7 +26,7 @@ export class CustomerLoginPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   submit(formValue) {
     this.database.customerIsValidUser(formValue).subscribe(
@@ -38,12 +38,16 @@ export class CustomerLoginPage implements OnInit {
           this.commonService.presentToast(customerloginResp.Message);
           console.log("my resp:::::::\n", customerloginResp + formValue);
           this.menuCtrl.enable(true);
-          localStorage.setItem('user', customerloginResp.user)
-          localStorage.setItem('x-access-token', customerloginResp.x_access_token)
+          localStorage.setItem("user", customerloginResp.user);
+          localStorage.setItem(
+            "x-access-token",
+            customerloginResp.x_access_token
+          );
           this.router.navigate(["/customer-dashboard"]);
         }
       },
-      err => {
+      customerloginErr => {
+        console.log("customerloginErr:::::::::::\n", customerloginErr);
         this.commonService.presentToast(" Error while calling API");
       }
     );

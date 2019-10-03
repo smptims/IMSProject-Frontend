@@ -1,4 +1,4 @@
-export const api = "ec2-13-232-32-106.ap-south-1.compute.amazonaws.com:3001/";
+export const api = "ec2-13-126-48-58.ap-south-1.compute.amazonaws.com:3001/";
 
 export const apiConfigUrl = {
   ADMIN_USERS: api + "adminusersapi/adminusers/",
