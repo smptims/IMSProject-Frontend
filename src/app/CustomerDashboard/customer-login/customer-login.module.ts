@@ -1,8 +1,9 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomerLoginPage } from './customer-login.page';
+import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
+    IonicModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -21,4 +22,4 @@ const routes: Routes = [
   ],
   declarations: [CustomerLoginPage]
 })
-export class CustomerLoginPageModule {}
+export class CustomerLoginPageModule { }

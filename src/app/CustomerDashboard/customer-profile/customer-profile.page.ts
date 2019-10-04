@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from "../../services/database/database.service";
 import { CommonService } from '../../services/common/common.service';
 import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { customerProfileType } from '../../models/model';
 
 @Component({
@@ -12,14 +12,13 @@ import { customerProfileType } from '../../models/model';
 })
 export class CustomerProfilePage implements OnInit {
 
-  
-
   public customerProfileDtls: Array<customerProfileType> = [];
   public inputToSearch: number = 1;
-  constructor(private databse: DatabaseService,
-              private router: Router, 
-              private commonService: CommonService, 
-              public modalController: ModalController) { }
+  constructor(
+    private databse: DatabaseService,
+    private router: Router,
+    private commonService: CommonService,
+    public modalController: ModalController) { }
 
 
   ngOnInit() {
@@ -27,14 +26,14 @@ export class CustomerProfilePage implements OnInit {
   }
 
   getCustmomerProfileDetails(inputToSearch: any) {
-    console.log(" input = " + inputToSearch ); 
+    console.log(" input = " + inputToSearch);
 
     this.databse.getCustmomerProfileDetails(inputToSearch).subscribe((customerProfileDetailsResp: any) => {
-      this.customerProfileDtls = customerProfileDetailsResp;  
+      this.customerProfileDtls = customerProfileDetailsResp;
 
       // Remove 
       this.customerProfileDtls.forEach((item: customerProfileType) => {
-         item.status = item.status === 'ACTIVE' ? 'ACTIVE' : 'INACTIVE';
+        item.status = item.status === 'ACTIVE' ? 'ACTIVE' : 'INACTIVE';
       })
     }, customerProfileDetailsError => {
       console.error('customerProfileDetailsError:::::::::::::::::::\n', customerProfileDetailsError)

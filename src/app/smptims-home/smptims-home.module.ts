@@ -21,4 +21,4 @@ const routes: Routes = [
   ],
   declarations: [SmptimsHomePage]
 })
-export class SmptimsHomePageModule {}
+export class SmptimsHomePageModule { }

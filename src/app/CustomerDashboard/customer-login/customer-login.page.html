@@ -8,23 +8,22 @@
                 </div>
             </ion-col>
         </ion-row>
-  
         <ion-row class="mrg-btm--10">
             <ion-col>
                 <ion-card class="welcome-card">
                     <ion-card-header class="padd-btm--10">
                         <ion-card-title class="ion-text-center padd-btm--10">
                             <h4 class="mrg-btm--10 ">Customer Login</h4>
-                         </ion-card-title>
+                        </ion-card-title>
                     </ion-card-header>
-  
                     <ion-card-content class="ion-text-center mrg-btm--10">
-                        <form class="mrg-btm--10" [formGroup]="customercredentails" (submit)="submit(customercredentails.value)">
+                        <form class="mrg-btm--10" [formGroup]="customercredentails"
+                            (submit)="submit(customercredentails.value)">
                             <ion-item class="nopadh_tp border-btm">
                                 <ion-label position="floating" class="font-12">User Id</ion-label>
                                 <ion-input class="nopadh_tp" type="text" formControlName="username" name="User Id">
                                 </ion-input>
-                            </ion-item> 
+                            </ion-item>
                             <ion-item class="nopadh_tp border-btm">
                                 <ion-label position="floating" class="font-12">Password</ion-label>
                                 <ion-input class="nopadh_tp" type="password" formControlName="password" name="password">
@@ -35,26 +34,21 @@
                                     <ion-checkbox></ion-checkbox><span> Remember me</span>
                                 </p>
                             </div>
-  
                             <div class="text-center">
                                 <button ion-button class="btn btn-rounded btn-success" type="submit">Login</button>
                             </div>
-  
                         </form>
-                        
                     </ion-card-content>
-  
                     <div class="text-center ion-margin-bottom">
-                        <div class="ssptcolor mrg-tp--5 font-12" style="padding: 5px;">Signup 
-                            <a class="ssptcolor text-decoration clickhere" tappable
-                                (click)="createCustomerRegDetails()" style="font-weight: bold">
+                        <div class="ssptcolor mrg-tp--5 font-12" style="padding: 5px;">Signup
+                            <a class="ssptcolor text-decoration clickhere" tappable (click)="createCustomerRegDetails()"
+                                style="font-weight: bold">
                                 Click here
                             </a>
                         </div>
-  
                         <div class="ssptcolor mrg-tp--5 font-12" style="padding: 5px;">Forget Password?
-                            <a class="ssptcolor text-decoration clickhere" tappable
-                                (click)="navToForgetPassword()" style="font-weight: bold">
+                            <a class="ssptcolor text-decoration clickhere" tappable (click)="navToForgetPassword()"
+                                style="font-weight: bold">
                                 Click here
                             </a>
                         </div>
@@ -67,12 +61,10 @@
                             <hr class="websiteaddhr">
                         </div>
                     </div>
-  
-  
                 </ion-card>
             </ion-col>
         </ion-row>
     </ion-grid>
     <!---Second Logo Grid--->
-  
-  </ion-content>
+
+</ion-content>

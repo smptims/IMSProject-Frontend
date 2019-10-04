@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { DatabaseService } from "../../services/database/database.service";
 import { CommonService } from "../../services/common/common.service";
 import { Router } from "@angular/router";
@@ -21,8 +21,8 @@ export class CustomerLoginPage implements OnInit {
     private menuCtrl: MenuController
   ) {
     this.customercredentails = this.formBuilder.group({
-      username: ["", Validators.compose([Validators.required])],
-      password: ["", Validators.compose([Validators.required])]
+      username: new FormControl("", Validators.compose([Validators.required])),
+      password: new FormControl("", Validators.compose([Validators.required]))
     });
   }
 
