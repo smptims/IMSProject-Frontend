@@ -30,6 +30,16 @@ export const sideMenu = [
     icon: 'home'
   },
   {
+    title: 'ServiceCenterHome',
+    path: '/servicecenter-dashboard',
+    icon: 'home'
+  },
+  {
+    title: 'CustomerHome',
+    path: '/customer-dashboard',
+    icon: 'home'
+  },
+  {
     title: 'Device Details',
     path: '/device-details',
     icon: 'analytics'
@@ -78,16 +88,6 @@ export const sideMenu = [
     title: 'Help',
     path: 'http://www.srimaruthitechnologies.com/img/smpt%20brochure.pdf',
     icon: 'help'
-  },
-  {
-    title: 'ServiceCenterHome',
-    path: '/servicecenter-dashboard',
-    icon: 'home'
-  },
-  {
-    title: 'CustomerHome',
-    path: '/customer-dashboard',
-    icon: 'home'
   },
   {
     title: 'Logout',

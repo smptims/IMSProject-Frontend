@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'service-reg', loadChildren: './service-reg/service-reg.module#ServiceRegPageModule' },
   { path: 'service-dtl', loadChildren: './service-dtl/service-dtl.module#ServiceDtlPageModule' },
   { path: 'service-edit', loadChildren: './service-edit/service-edit.module#ServiceEditPageModule' },
-  { path: 'user-mail-list', loadChildren: './user-mail-list/user-mail-list.module#UserMailListPageModule' },  
+  { path: 'user-mail-list', loadChildren: './user-mail-list/user-mail-list.module#UserMailListPageModule' },
 
   { path: 'refertravel', loadChildren: './refertravel/refertravel.module#RefertravelPageModule' },
   { path: 'send-sms', loadChildren: './send-sms/send-sms.module#SendSmsPageModule' },
@@ -53,8 +53,8 @@ const routes: Routes = [
   { path: 'servicecenter-send-mail', loadChildren: './ServiceCenterDashboard/servicecenter-send-mail/servicecenter-send-mail.module#ServicecenterSendMailPageModule' },
   { path: 'servicecenter-send-sms', loadChildren: './ServiceCenterDashboard/servicecenter-send-sms/servicecenter-send-sms.module#ServicecenterSendSmsPageModule' },
   { path: 'servicecenter-resetpassword', loadChildren: './ServiceCenterDashboard/servicecenter-resetpassword/servicecenter-resetpassword.module#ServicecenterResetpasswordPageModule' },
-  
-  
+
+
 ];
 @NgModule({
   imports: [

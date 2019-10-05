@@ -53,19 +53,19 @@ export class SendMailPage implements OnInit {
   * @return {none}
   */
    sendMailSubmit(body: any): void {
-      // Retrieve the validated form fields
-      let from: string = body.fromemail,
+      let from: string = 'srjagath76@gmail.com',
          to: string = body.toemail,
          cc: string = body.toemail,
          bcc: string = "",
          subject: string = "Welcome mail",
          message: string = body.message["message"]
-      console.log(" 1.0 this.attachment value=" + this.attachment.length);
+      console.log(" 1.0 this.attachment value=" + this.attachment);
       console.log(" 2.0 body.toemail.value=" + body.toemail);
       // Has the user selected an attachment?
       if (this.attachment > 1) {
          // If so call the sendEmail method of the EmailProvider service, pass in
          // the retrieved form data and watch the magic happen! :)
+         debugger;
          this.emailProvider.sendEmail(to, cc, bcc, this.attachment, subject, message);
          this.commonService.presentToast(' Successfully you need to select an attachment');
       }
