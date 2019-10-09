@@ -42,4 +42,4 @@ import { ImageProvider } from "./send-mail/image.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

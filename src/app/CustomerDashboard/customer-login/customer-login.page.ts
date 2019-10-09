@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { DatabaseService } from "../../services/database/database.service";
 import { CommonService } from "../../services/common/common.service";
 import { Router } from "@angular/router";
@@ -49,6 +54,7 @@ export class CustomerLoginPage implements OnInit {
       customerloginErr => {
         console.log("customerloginErr:::::::::::\n", customerloginErr);
         this.commonService.presentToast(" Error while calling API");
+        alert(JSON.stringify(customerloginErr));
       }
     );
   }

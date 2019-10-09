@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Injectable } from "@angular/core";
+import { EmailComposer } from "@ionic-native/email-composer/ngx";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class EmailProvider {
-
-  constructor(private _EMAIL: EmailComposer) { }
+  constructor(private _EMAIL: EmailComposer) {}
 
   //  /**
   //   *
@@ -20,12 +19,14 @@ export class EmailProvider {
   //   * @param body           {string}    The message content
   //   *
 
-  sendEmail(to: string,
+  sendEmail(
+    to: string,
     cc: string,
     bcc: string,
     attachment: number,
     subject: string,
-    body: string): void {
+    body: string
+  ): void {
     // let email: any = {
     //   app: 'mailto',
     //   from: "srjagath76@gmail.com",
@@ -44,19 +45,18 @@ export class EmailProvider {
     // a new e-mail message populated with the
     // object containing our message data
     // this._EMAIL.open(email);
-    this._EMAIL.hasPermission()
+    this._EMAIL
+      .hasPermission()
       .then((isPermitted: boolean) => {
         let email: any = {
-          app: 'mailto',
+          app: "mailto",
           from: "srjagath76@gmail.com",
           to: to,
           cc: "srjagath76@gmail.com",
           bcc: "srjagath76@gmail.com",
-          attachments: [
-            attachment
-          ],
+          attachments: [attachment],
           subject: " SMPT IMS subject",
-          body: 'How are you? Nice greetings from SMPTIMS',
+          body: "How are you? Nice greetings from SMPTIMS"
         };
         debugger;
 
@@ -66,8 +66,8 @@ export class EmailProvider {
         this._EMAIL.open(email);
       })
       .catch((error: any) => {
-        console.log('No access permission granted');
-        console.error('Mail error:::::::::::::::', error);
+        console.log("No access permission granted");
+        console.error("Mail error:::::::::::::::", error);
         debugger;
       });
 
@@ -118,5 +118,4 @@ export class EmailProvider {
     //     debugger;
     //   });
   }
-
 }

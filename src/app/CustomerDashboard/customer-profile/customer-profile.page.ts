@@ -1,44 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { DatabaseService } from "../../services/database/database.service";
-import { CommonService } from '../../services/common/common.service';
-import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { customerProfileType } from '../../models/model';
+import { CommonService } from "../../services/common/common.service";
+import { ModalController } from "@ionic/angular";
+import { Router } from "@angular/router";
+import { customerProfileType } from "../../models/model";
 
 @Component({
-  selector: 'app-customer-profile',
-  templateUrl: './customer-profile.page.html',
-  styleUrls: ['./customer-profile.page.scss'],
+  selector: "app-customer-profile",
+  templateUrl: "./customer-profile.page.html",
+  styleUrls: ["./customer-profile.page.scss"]
 })
-export class CustomerProfilePage implements OnInit {
-
+export class CustomerProfilePage {
   public customerProfileDtls: Array<customerProfileType> = [];
-  public inputToSearch: number = 1;
+  public userId: string = "0";
   constructor(
     private databse: DatabaseService,
     private router: Router,
     private commonService: CommonService,
-    public modalController: ModalController) { }
-
-
-  ngOnInit() {
-    this.getCustmomerProfileDetails(this.inputToSearch);
+    public modalController: ModalController
+  ) {
+    this.userId = localStorage.getItem("user");
+    console.log(this.userId);
+    this.getCustmomerProfileDetails();
   }
 
-  getCustmomerProfileDetails(inputToSearch: any) {
-    console.log(" input = " + inputToSearch);
-
-    this.databse.getCustmomerProfileDetails(inputToSearch).subscribe((customerProfileDetailsResp: any) => {
-      this.customerProfileDtls = customerProfileDetailsResp;
-
-      // Remove 
-      this.customerProfileDtls.forEach((item: customerProfileType) => {
-        item.status = item.status === 'ACTIVE' ? 'ACTIVE' : 'INACTIVE';
-      })
-    }, customerProfileDetailsError => {
-      console.error('customerProfileDetailsError:::::::::::::::::::\n', customerProfileDetailsError)
-    });
+  getCustmomerProfileDetails() {
+    this.databse.getCustmomerProfileDetails(this.userId).subscribe(
+      (customerProfileDetailsResp: any) => {
+        if (
+          customerProfileDetailsResp[0] !== undefined &&
+          customerProfileDetailsResp[0] !== null &&
+          customerProfileDetailsResp[0] !== []
+        ) {
+          this.customerProfileDtls = customerProfileDetailsResp;
+        }
+      },
+      customerProfileDetailsError => {
+        console.error(
+          "customerProfileDetailsError:::::::::::::::::::\n",
+          customerProfileDetailsError
+        );
+      }
+    );
   }
-
-
 }

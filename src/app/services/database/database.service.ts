@@ -7,13 +7,16 @@ import { apiConfigUrl } from "src/app/constants/constants";
 })
 export class DatabaseService {
   private configURL = apiConfigUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   headers() {
     const headers = new HttpHeaders();
-    headers.append('Content-Type', 'Application/json')
-    if (localStorage.getItem('x-access-token') !== undefined && localStorage.getItem('x-access-token') !== null) {
-      headers.append('token', localStorage.getItem('x-access-token'))
+    headers.append("Content-Type", "Application/json");
+    if (
+      localStorage.getItem("x-access-token") !== undefined &&
+      localStorage.getItem("x-access-token") !== null
+    ) {
+      headers.append("token", localStorage.getItem("x-access-token"));
     }
     return { headers: headers };
   }
@@ -32,10 +35,7 @@ export class DatabaseService {
   }
 
   isUSerPresent(username) {
-    return this.http.get(
-      this.configURL.ADMIN_USERS + username,
-      this.headers()
-    );
+    return this.http.get(this.configURL.ADMIN_USERS + username, this.headers());
   }
 
   createUser(body) {
@@ -47,13 +47,17 @@ export class DatabaseService {
   }
 
   /***************************************************************
-  ******************** FORGET PASSWORD - GENERATEOTP ************
-  ****************************************************************/
+   ******************** FORGET PASSWORD - GENERATEOTP ************
+   ****************************************************************/
 
   generateOTP(formValue) {
     const adminid = formValue.adminid;
+    return this.http.get(this.configURL.GENERATE_OTP + adminid, this.headers());
+  }
+
+  sendSMS(phoneNumber, message) {
     return this.http.get(
-      this.configURL.GENERATE_OTP + adminid,
+      this.configURL.SEND_SMS + phoneNumber + "/" + message,
       this.headers()
     );
   }
@@ -67,11 +71,17 @@ export class DatabaseService {
   }
 
   getDeviceInstalledStatusDetails(idFromDate: any, idToDate: any) {
-    return this.http.get(this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate + "/" + idToDate, this.headers());
+    return this.http.get(
+      this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate + "/" + idToDate,
+      this.headers()
+    );
   }
 
   getDeviceDetailsByID(idToGetData: any) {
-    return this.http.get(this.configURL.DEVICE_DETAILS + idToGetData, this.headers());
+    return this.http.get(
+      this.configURL.DEVICE_DETAILS + idToGetData,
+      this.headers()
+    );
   }
 
   createDeviceDetail(body: any) {
@@ -79,12 +89,15 @@ export class DatabaseService {
   }
 
   updateDeviceDetail(body: any) {
-    let idToUpdate = body.did_seq_no
+    let idToUpdate = body.did_seq_no;
     return this.http.put(this.configURL.DEVICE_DETAILS, body, this.headers());
   }
 
   deleteDeviceDetail(idToDelete) {
-    return this.http.delete(this.configURL.DEVICE_DETAILS + idToDelete, this.headers());
+    return this.http.delete(
+      this.configURL.DEVICE_DETAILS + idToDelete,
+      this.headers()
+    );
   }
 
   /***************************************************************
@@ -92,12 +105,15 @@ export class DatabaseService {
    ****************************************************************/
 
   getAdminProfileDetails(idToDisplay: any) {
-    return this.http.get(this.configURL.ADMIN_USERS + idToDisplay, this.headers());
+    return this.http.get(
+      this.configURL.ADMIN_USERS + idToDisplay,
+      this.headers()
+    );
   }
 
   /***************************************************************
-    ************* CUSTOMER REGISTRATION       ***************
-    ****************************************************************/
+   ************* CUSTOMER REGISTRATION       ***************
+   ****************************************************************/
 
   customerIsValidUser(formValue) {
     const username = formValue.username;
@@ -109,7 +125,11 @@ export class DatabaseService {
   }
 
   createCustomerRegDetails(customerUserDetails) {
-    return this.http.post(this.configURL.CUST_USERS, customerUserDetails, this.headers());
+    return this.http.post(
+      this.configURL.CUST_USERS,
+      customerUserDetails,
+      this.headers()
+    );
   }
 
   getCustomerUsers() {
@@ -117,7 +137,10 @@ export class DatabaseService {
   }
 
   getCustomerUsersByID(idToGetData) {
-    return this.http.get(this.configURL.CUST_USERS + idToGetData, this.headers());
+    return this.http.get(
+      this.configURL.CUST_USERS + idToGetData,
+      this.headers()
+    );
   }
 
   updateCustomerUsers(body: any) {
@@ -125,23 +148,25 @@ export class DatabaseService {
   }
 
   deleteCustomerUsers(idToDelete) {
-    return this.http.delete(this.configURL.CUST_USERS + idToDelete, this.headers());
+    return this.http.delete(
+      this.configURL.CUST_USERS + idToDelete,
+      this.headers()
+    );
   }
 
-
   /***************************************************************
-    ************************ CUSTOMER PROFILE DETAILS ******************
-    ****************************************************************/
+   ************************ CUSTOMER PROFILE DETAILS ******************
+   ****************************************************************/
 
   getCustmomerProfileDetails(idToDisplay: any) {
-    return this.http.get(this.configURL.CUST_USERS + idToDisplay, this.headers());
+    return this.http.get(
+      this.configURL.CUST_USERS + idToDisplay,
+      this.headers()
+    );
   }
 
   isCustomerUSerPresent(username) {
-    return this.http.get(
-      this.configURL.CUST_USERS + username,
-      this.headers()
-    );
+    return this.http.get(this.configURL.CUST_USERS + username, this.headers());
   }
 
   updateCustomerUser(body: any) {
@@ -162,12 +187,19 @@ export class DatabaseService {
   }
 
   createServiceCenterRegDetails(customerUserDetails) {
-    return this.http.post(this.configURL.CUST_USERS, customerUserDetails, this.headers());
+    return this.http.post(
+      this.configURL.CUST_USERS,
+      customerUserDetails,
+      this.headers()
+    );
   }
 
-
   createServiceCenterUsers(serviceCenterUsers) {
-    return this.http.post(this.configURL.SERVICE_CENTER_USERS, serviceCenterUsers, this.headers());
+    return this.http.post(
+      this.configURL.SERVICE_CENTER_USERS,
+      serviceCenterUsers,
+      this.headers()
+    );
   }
 
   getServiceCenterUsers() {
@@ -175,30 +207,42 @@ export class DatabaseService {
   }
 
   getServiceCenterDetailsByID(idToGetData) {
-    return this.http.get(this.configURL.SERVICE_CENTER_USERS + idToGetData, this.headers());
+    return this.http.get(
+      this.configURL.SERVICE_CENTER_USERS + idToGetData,
+      this.headers()
+    );
   }
   updateServiceCenterUsers(body: any) {
-    return this.http.put(this.configURL.SERVICE_CENTER_USERS, body, this.headers());
+    return this.http.put(
+      this.configURL.SERVICE_CENTER_USERS,
+      body,
+      this.headers()
+    );
   }
 
   deleteServiceCenterUsers(idToDelete) {
-    return this.http.delete(this.configURL.SERVICE_CENTER_USERS + idToDelete, this.headers());
+    return this.http.delete(
+      this.configURL.SERVICE_CENTER_USERS + idToDelete,
+      this.headers()
+    );
   }
 
   /* ***************************************************************
-     *************            REFER TRAVELS          ***************
-     *************************************************************** */
+   *************            REFER TRAVELS          ***************
+   *************************************************************** */
   createReferTravels(body: any) {
     return this.http.put(this.configURL.REFER_TRAVELS, body, this.headers());
   }
 
-
   /***************************************************************
-    ************************ SERVICE CENTER PROFILE DETAILS ******************
-    ****************************************************************/
+   ************************ SERVICE CENTER PROFILE DETAILS ******************
+   ****************************************************************/
 
   getServiceCenterProfileDetails(idToDisplay: any) {
-    return this.http.get(this.configURL.SERVICE_CENTER_USERS + idToDisplay, this.headers());
+    return this.http.get(
+      this.configURL.SERVICE_CENTER_USERS + idToDisplay,
+      this.headers()
+    );
   }
 
   isServiceCenterUSerPresent(username) {
@@ -209,7 +253,10 @@ export class DatabaseService {
   }
 
   updateServieCenterUser(body: any) {
-    return this.http.put(this.configURL.SERVICE_CENTER_USERS, body, this.headers());
+    return this.http.put(
+      this.configURL.SERVICE_CENTER_USERS,
+      body,
+      this.headers()
+    );
   }
-
-}  
+}
