@@ -12,12 +12,12 @@ export class DatabaseService {
   headers() {
     const headers = new HttpHeaders();
     headers.append("Content-Type", "Application/json");
-    if (
-      localStorage.getItem("x-access-token") !== undefined &&
-      localStorage.getItem("x-access-token") !== null
-    ) {
-      headers.append("token", localStorage.getItem("x-access-token"));
-    }
+    // if (
+    //   localStorage.getItem("x-access-token") !== undefined &&
+    //   localStorage.getItem("x-access-token") !== null
+    // ) {
+    //   headers.append("token", localStorage.getItem("x-access-token"));
+    // }
     return { headers: headers };
   }
 

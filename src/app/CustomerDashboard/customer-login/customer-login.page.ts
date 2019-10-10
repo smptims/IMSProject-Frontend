@@ -41,7 +41,7 @@ export class CustomerLoginPage implements OnInit {
           this.commonService.presentToast(customerloginResp.ErrorMessage);
         } else {
           this.commonService.presentToast(customerloginResp.Message);
-          console.log("my resp:::::::\n", customerloginResp + formValue);
+          console.log("my resp:::::::\n", customerloginResp, "\n", formValue);
           this.menuCtrl.enable(true);
           localStorage.setItem("user", customerloginResp.user);
           localStorage.setItem(
