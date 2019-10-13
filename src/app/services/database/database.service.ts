@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { apiConfigUrl } from "src/app/constants/constants";
+import { HTTP } from "@ionic-native/http/ngx";
 
 @Injectable({
   providedIn: "root"
 })
 export class DatabaseService {
   private configURL = apiConfigUrl;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private nativeHTTP: HTTP) {}
 
   headers() {
     const headers = new HttpHeaders();
@@ -116,42 +117,114 @@ export class DatabaseService {
    ****************************************************************/
 
   customerIsValidUser(formValue) {
-    const username = formValue.username;
-    const password = formValue.password;
-    return this.http.get(
-      this.configURL.CUST_USERS + username + "/" + password,
-      this.headers()
-    );
+    return new Promise((resolve, reject) => {
+      const username = formValue.username;
+      const password = formValue.password;
+      const url = this.configURL.CUST_USERS + username + "/" + password;
+      this.nativeHTTP.get(url, {}, this.headers()).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("customerIsValidUser::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.get(
+    //   this.configURL.CUST_USERS + username + "/" + password,
+    //   this.headers()
+    // );
   }
 
   createCustomerRegDetails(customerUserDetails) {
-    return this.http.post(
-      this.configURL.CUST_USERS,
-      customerUserDetails,
-      this.headers()
-    );
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS;
+      this.nativeHTTP.post(url, customerUserDetails, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("createCustomerRegDetails::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.post(
+    //   this.configURL.CUST_USERS,
+    //   customerUserDetails,
+    //   this.headers()
+    // );
   }
 
   getCustomerUsers() {
-    return this.http.get(this.configURL.CUST_USERS, this.headers());
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS;
+      this.nativeHTTP.get(url, {}, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("getCustomerUsers::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.get(this.configURL.CUST_USERS, this.headers());
   }
 
   getCustomerUsersByID(idToGetData) {
-    return this.http.get(
-      this.configURL.CUST_USERS + idToGetData,
-      this.headers()
-    );
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS + idToGetData;
+      this.nativeHTTP.get(url, {}, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("getCustomerUsersByID::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.get(
+    //   this.configURL.CUST_USERS + idToGetData,
+    //   this.headers()
+    // );
   }
 
   updateCustomerUsers(body: any) {
-    return this.http.put(this.configURL.CUST_USERS, body, this.headers());
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS;
+      this.nativeHTTP.put(url, body, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("updateCustomerUsers::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.put(this.configURL.CUST_USERS, body, this.headers());
   }
 
   deleteCustomerUsers(idToDelete) {
-    return this.http.delete(
-      this.configURL.CUST_USERS + idToDelete,
-      this.headers()
-    );
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS + idToDelete;
+      this.nativeHTTP.delete(url, {}, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("deleteCustomerUsers::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.delete(
+    //   this.configURL.CUST_USERS + idToDelete,
+    //   this.headers()
+    // );
   }
 
   /***************************************************************
@@ -159,18 +232,54 @@ export class DatabaseService {
    ****************************************************************/
 
   getCustmomerProfileDetails(idToDisplay: any) {
-    return this.http.get(
-      this.configURL.CUST_USERS + idToDisplay,
-      this.headers()
-    );
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS + idToDisplay;
+      this.nativeHTTP.get(url, {}, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("getCustmomerProfileDetails::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.get(
+    //   this.configURL.CUST_USERS + idToDisplay,
+    //   this.headers()
+    // );
   }
 
   isCustomerUSerPresent(username) {
-    return this.http.get(this.configURL.CUST_USERS + username, this.headers());
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS + username;
+      this.nativeHTTP.get(url, {}, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("isCustomerUSerPresent::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.get(this.configURL.CUST_USERS + username, this.headers());
   }
 
   updateCustomerUser(body: any) {
-    return this.http.put(this.configURL.CUST_USERS, body, this.headers());
+    return new Promise((resolve, reject) => {
+      const url = this.configURL.CUST_USERS;
+      this.nativeHTTP.put(url, body, {}).then(
+        resp => {
+          resolve(JSON.parse(resp.data));
+        },
+        err => {
+          console.error("updateCustomerUser::::::::::::::::::\n", err);
+          reject(err.error);
+        }
+      );
+    });
+    // return this.http.put(this.configURL.CUST_USERS, body, this.headers());
   }
 
   /***************************************************************
