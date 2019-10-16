@@ -18,14 +18,24 @@ export class ServicecenterProfilePage implements OnInit {
     private router: Router,
     private commonService: CommonService,
     public modalController: ModalController
+<<<<<<< HEAD
   ) { }
 
   ngOnInit() { }
+=======
+  ) {}
+
+  ngOnInit() {}
+>>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
 
   getServiceCenterProfileDetails(inputToSearch: any) {
     console.log(" input = " + inputToSearch);
 
+<<<<<<< HEAD
     this.databse.getServiceCenterProfileDetails(inputToSearch).then(
+=======
+    this.databse.getServiceCenterProfileDetails(inputToSearch).subscribe(
+>>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
       (serviceCenterProfileDetailsResp: any) => {
         this.serviceCenterProfileDtls = serviceCenterProfileDetailsResp;
 

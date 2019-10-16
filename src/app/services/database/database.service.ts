@@ -26,9 +26,9 @@ export class DatabaseService {
    ******************** ADMIN_USERS ******************************
    ****************************************************************/
   isValidUser(formValue: any) {
-    const username = formValue.username;
-    const password = formValue.password;
     return new Promise((resolve, reject) => {
+      const username = formValue.username;
+      const password = formValue.password;
       const url = this.configURL.ADMIN_USERS + username + "/" + password;
       this.nativeHTTP.get(url, {}, this.headers()).then(
         resp => {
