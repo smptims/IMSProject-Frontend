@@ -44,11 +44,7 @@ export class CustomerForgetpassPage implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   ngOnInit() { }
-=======
-  ngOnInit() {}
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
 
   sendOTP(customerMobileNumberFormValue) {
     this.otpStatus = true;
@@ -59,11 +55,7 @@ export class CustomerForgetpassPage implements OnInit {
       this.randomNumber +
       ".";
     const mobileNumber = customerMobileNumberFormValue.customermobile;
-<<<<<<< HEAD
     // this.database.generateOTP(mobileNumber).then((generateOTPResp: any) => {
-=======
-    // this.database.generateOTP(mobileNumber).subscribe((generateOTPResp: any) => {
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
     //   console.log('my response:::::::\n', generateOTPResp)
     //   if (!generateOTPResp.Success) {
     //     this.commonService.presentToast(generateOTPResp.ErrorMessage);
@@ -74,20 +66,11 @@ export class CustomerForgetpassPage implements OnInit {
     // }, err => {
     //   this.commonService.presentToast(" Error while calling API");
     // });
-<<<<<<< HEAD
     this.databaseService.sendSMS(mobileNumber, message).then((smsResp: any) => {
       if (smsResp.Success) {
         this.commonService.presentToast("SMS Sent Successfully");
       }
     },
-=======
-    this.databaseService.sendSMS(mobileNumber, message).subscribe(
-      (smsResp: any) => {
-        if (smsResp.Success) {
-          this.commonService.presentToast("SMS Sent Successfully");
-        }
-      },
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
       smsErr => {
         console.error("smsErr::::::::::::\n", smsErr);
       }
@@ -99,11 +82,7 @@ export class CustomerForgetpassPage implements OnInit {
       console.log("Otp mached");
       this.databaseService
         .isCustomerUSerPresent(customerForgetPasswordFormValue.customerno)
-<<<<<<< HEAD
         .then((customerUserResp: Array<any>) => {
-=======
-        .subscribe((customerUserResp: Array<any>) => {
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
           console.log("Otp mached successfully", customerUserResp);
           if (customerUserResp == [] || customerUserResp.length === 0) {
             this.commonService.presentToast("User not found");

@@ -27,11 +27,7 @@ export class CustomerResetpasswordPage implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   ngOnInit() { }
-=======
-  ngOnInit() {}
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
 
   saveCustomerPassword(restCustomerPasswordFormvalue) {
     if (
@@ -39,11 +35,7 @@ export class CustomerResetpasswordPage implements OnInit {
       restCustomerPasswordFormvalue.confirmpassword
     ) {
       this.user.password = restCustomerPasswordFormvalue.password;
-<<<<<<< HEAD
       this.database.updateCustomerUser(this.user).then(
-=======
-      this.database.updateCustomerUser(this.user).subscribe(
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
         (updateUserResp: any) => {
           console.log("updateUserResp:::::::::::::::::::::\n", updateUserResp);
           if (

@@ -13,21 +13,12 @@ export class CustomerSendSmsPage implements OnInit {
   constructor(
     private databseService: DatabaseService,
     private commonService: CommonService
-<<<<<<< HEAD
   ) { }
 
   ngOnInit() { }
 
   sendSMS() {
     this.databseService.sendSMS(this.phoneNumber, this.message).then(
-=======
-  ) {}
-
-  ngOnInit() {}
-
-  sendSMS() {
-    this.databseService.sendSMS(this.phoneNumber, this.message).subscribe(
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
       (smsResp: any) => {
         if (smsResp.Success) {
           this.commonService.presentToast("SMS Sent Successfully");

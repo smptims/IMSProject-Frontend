@@ -25,11 +25,7 @@ export class CustomerProfilePage {
   }
 
   getCustmomerProfileDetails() {
-<<<<<<< HEAD
     this.databse.getCustmomerProfileDetails(this.userId).then(
-=======
-    this.databse.getCustmomerProfileDetails(this.userId).subscribe(
->>>>>>> a1c132986b06fcbb126f08bf92da2f77ee45602f
       (customerProfileDetailsResp: any) => {
         if (
           customerProfileDetailsResp[0] !== undefined &&
