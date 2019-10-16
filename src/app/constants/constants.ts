@@ -1,6 +1,8 @@
-export const api = "ec2-13-126-48-58.ap-south-1.compute.amazonaws.com:3001/";
+export const api = "http://13.126.48.58:3001/";
 
 export const apiConfigUrl = {
+  SEND_SMS: api + "sendsmsapi/sendsms/",
+
   ADMIN_USERS: api + "adminusersapi/adminusers/",
   GENERATE_OTP: api + "generateotpapi/generateotp/",
   ADMIN_MAIL: api + "adminmailapi/adminmail/",
@@ -11,90 +13,92 @@ export const apiConfigUrl = {
   SERVICE_CENTER_USERS: api + "servicecenterusersapi/servicecenterusers/",
 
   DEVICE_DETAILS: api + "deviceinstalleddtlsapi/deviceinstalleddtls/",
-  DEVICE_INSTALLED_DAILY_RPT: api + "deviceinstalleddailyrptapi/deviceinstalleddailyrpt/",
-  DEVICE_INSTALLED_HIS_RPT: api + "deviceinstalledhistrptapi/deviceinstalledhistrpt/",
+  DEVICE_INSTALLED_DAILY_RPT:
+    api + "deviceinstalleddailyrptapi/deviceinstalleddailyrpt/",
+  DEVICE_INSTALLED_HIS_RPT:
+    api + "deviceinstalledhistrptapi/deviceinstalledhistrpt/",
   DEVICE_STATUS_RPT: api + "devicestatusrptapi/devicestatusrpt/",
-  DEVICE_INSTALLED_STATUS_RPT: api + "deviceinstalledstatusrptapi/deviceinstalledstatusrpt/",
+  DEVICE_INSTALLED_STATUS_RPT:
+    api + "deviceinstalledstatusrptapi/deviceinstalledstatusrpt/",
 
   PRODUCT_ORD_DTLS: api + "productorderdtlsapi/productorderdtls/",
   PRODUCT_ORD_SUM_DTLS: api + "productordersmryapi/productordersmry/",
   PRODUCT_TECH_DTLS: api + "producttechdtlsapi/producttechdtls/",
   REFER_TRAVELS: api + "refertravelsapi/refertravels"
-
 };
 // admin sidemenu options
 export const sideMenu = [
   {
-    title: 'Home',
-    path: '/admin-dashboard',
-    icon: 'home'
+    title: "Home",
+    path: "/admin-dashboard",
+    icon: "home"
   },
   {
-    title: 'ServiceCenterHome',
-    path: '/servicecenter-dashboard',
-    icon: 'home'
+    title: "ServiceCenterHome",
+    path: "/servicecenter-dashboard",
+    icon: "home"
   },
   {
-    title: 'CustomerHome',
-    path: '/customer-dashboard',
-    icon: 'home'
+    title: "CustomerHome",
+    path: "/customer-dashboard",
+    icon: "home"
   },
   {
-    title: 'Device Details',
-    path: '/device-details',
-    icon: 'analytics'
+    title: "Device Details",
+    path: "/device-details",
+    icon: "analytics"
   },
   {
-    title: 'Profile Details',
-    path: '/admin-profile',
-    icon: 'person'
+    title: "Profile Details",
+    path: "/admin-profile",
+    icon: "person"
   },
   {
-    title: 'Customer Details',
-    path: '/customer-dtl',
-    icon: 'contacts'
+    title: "Customer Details",
+    path: "/customer-dtl",
+    icon: "contacts"
   },
   {
-    title: 'Service Center Details',
-    path: '/service-dtl',
-    icon: 'briefcase'
+    title: "Service Center Details",
+    path: "/service-dtl",
+    icon: "briefcase"
   },
   {
-    title: 'Reports',
-    path: '/daily-reports',
-    icon: 'briefcase'
+    title: "Reports",
+    path: "/daily-reports",
+    icon: "briefcase"
   },
   {
-    title: 'Mail',
-    path: '/send-mail',
-    icon: 'mail-unread'
+    title: "Mail",
+    path: "/send-mail",
+    icon: "mail-unread"
   },
   {
-    title: 'SMS',
-    path: '/send-sms',
-    icon: 'chatboxes'
+    title: "SMS",
+    path: "/send-sms",
+    icon: "chatboxes"
   },
   {
-    title: 'Notifications',
-    path: '/user-mail-list',
-    icon: 'notifications'
+    title: "Notifications",
+    path: "/user-mail-list",
+    icon: "notifications"
   },
   {
-    title: 'Refer Travel',
-    path: '/refertravel',
-    icon: 'car'
+    title: "Refer Travel",
+    path: "/refertravel",
+    icon: "car"
   },
   {
-    title: 'Help',
-    path: 'http://www.srimaruthitechnologies.com/img/smpt%20brochure.pdf',
-    icon: 'help'
+    title: "Help",
+    path: "http://www.srimaruthitechnologies.com/img/smpt%20brochure.pdf",
+    icon: "help"
   },
   {
-    title: 'Logout',
-    path: '/smptims-home',
-    icon: 'power'
+    title: "Logout",
+    path: "/smptims-home",
+    icon: "power"
   }
-]
+];
 
 // customer dashboard sidemenu options
 // export const customerSideMenu = [
@@ -184,7 +188,6 @@ export const sideMenu = [
 //   }
 // ]
 
-
 //  FOOTER MENU CONSTANTS
 // export const footerMenu = [
 //   {
@@ -209,34 +212,34 @@ export const sideMenu = [
 //   }
 // ]
 
-// DEVICE STATUS CONSTANTS.... 
+// DEVICE STATUS CONSTANTS....
 export const deviceStatus = [
   {
-    value: 'ALL',
-    title: 'All'
+    value: "ALL",
+    title: "All"
   },
   {
-    value: 'ACTIVE',
-    title: 'Active'
+    value: "ACTIVE",
+    title: "Active"
   },
   {
-    value: 'INACTIVE',
-    title: 'Inactive'
+    value: "INACTIVE",
+    title: "Inactive"
   },
   {
-    value: 'INSTALLED',
-    title: 'Installed'
+    value: "INSTALLED",
+    title: "Installed"
   },
   {
-    value: 'DELIVERED',
-    title: 'Delivered'
+    value: "DELIVERED",
+    title: "Delivered"
   },
   {
-    value: 'REQUEST',
-    title: 'Send Request to Install'
+    value: "REQUEST",
+    title: "Send Request to Install"
   },
   {
-    value: 'READY',
-    title: 'Ready to install'
+    value: "READY",
+    title: "Ready to install"
   }
 ];

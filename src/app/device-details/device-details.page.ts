@@ -26,18 +26,18 @@ export class DeviceDetailsPage implements OnInit {
   public inputToSearch: string = '';
   public deviceStatusList: Array<any> = [];
   pdfObj = null;
-  constructor(private databse: DatabaseService, 
-              private router: Router, 
-              private commonService: CommonService, 
-              public modalController: ModalController,
-              public browserModule: BrowserModule,
-              public errorHandler: ErrorHandler,
-              public file: File,
-              public fileopener: FileOpener,
-              public plt: Platform
-              ) { 
+  constructor(private databse: DatabaseService,
+    private router: Router,
+    private commonService: CommonService,
+    public modalController: ModalController,
+    public browserModule: BrowserModule,
+    public errorHandler: ErrorHandler,
+    public file: File,
+    public fileopener: FileOpener,
+    public plt: Platform
+  ) {
 
-              }
+  }
 
   ngOnInit() {
     this.deviceStatusList = deviceStatus;
@@ -71,7 +71,7 @@ export class DeviceDetailsPage implements OnInit {
   }
 
   getDeviceDetails() {
-    this.databse.getDeviceDetails().subscribe((deviceDatailsResp: any) => {
+    this.databse.getDeviceDetails().then((deviceDatailsResp: any) => {
       this.deviceDatails = deviceDatailsResp.data;
       // Remove 
       this.deviceDatails.forEach((item: DeviceDetailsType) => {
@@ -105,7 +105,7 @@ export class DeviceDetailsPage implements OnInit {
     console.log(item.status)
     item.status = item.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
     console.log(item.status)
-    this.databse.updateDeviceDetail(item).subscribe((updateDeviceDetailResp: any) => {
+    this.databse.updateDeviceDetail(item).then((updateDeviceDetailResp: any) => {
       if (updateDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Updated Device Status')
         this.getDeviceDetails()
@@ -119,7 +119,7 @@ export class DeviceDetailsPage implements OnInit {
   }
 
   createDeviceDetail(body: DeviceDetailsType) {
-    this.databse.createDeviceDetail(body).subscribe((createDeviceDetailResp: any) => {
+    this.databse.createDeviceDetail(body).then((createDeviceDetailResp: any) => {
       if (createDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Created Device Details')
       } else {
@@ -132,7 +132,7 @@ export class DeviceDetailsPage implements OnInit {
   }
 
   deleteDeviceDetail(idToDelete: any) {
-    this.databse.deleteDeviceDetail(idToDelete).subscribe((deleteDeviceDetailResp: any) => {
+    this.databse.deleteDeviceDetail(idToDelete).then((deleteDeviceDetailResp: any) => {
       if (deleteDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Deleted Device Details')
         this.getDeviceDetails()
@@ -166,10 +166,10 @@ export class DeviceDetailsPage implements OnInit {
   // start: PDF generation  
   createPDF() {
     console.log(" inside createpdf.....")
- 
+
     let dataToPrint = [];
-    for (let i = 0; i <this.devices.length; i++) {
-      dataToPrint.push([this.devices[i].did_seq_no, this.devices[i].customer_no, this.devices[i].device_no, this.devices[i].status,this.devices[i].vehicle_regd_no])
+    for (let i = 0; i < this.devices.length; i++) {
+      dataToPrint.push([this.devices[i].did_seq_no, this.devices[i].customer_no, this.devices[i].device_no, this.devices[i].status, this.devices[i].vehicle_regd_no])
     }
     let pdfContent = {
       content: [
@@ -177,38 +177,38 @@ export class DeviceDetailsPage implements OnInit {
           layout: 'lightHorizontalLines',
           table: {
             headerRows: 1,
-            widths: ['*', '*', '*', '*','*'],
+            widths: ['*', '*', '*', '*', '*'],
             body: [
-              ['Seq No', 'Cust No', 'Dev No','Dev Status', 'Vech No']
+              ['Seq No', 'Cust No', 'Dev No', 'Dev Status', 'Vech No']
             ].concat(dataToPrint)
           }
         }
       ]
-      }
+    }
     this.pdfObj = pdfMake.createPdf(pdfContent);
     this.downloadPdf();
   }
-    downloadPdf() {
-      const pdfName = "report_" + new Date().toLocaleDateString() + ".pdf";
-      if (this.plt.is('cordova')) {
-        this.pdfObj.getBuffer((buffer) => {
-          const blob = new Blob([buffer], { type: 'application/pdf' });
-          this.file.writeFile(this.file.externalRootDirectory, pdfName, blob, { replace: true }).then(fileEntry => {
-            this.fileopener.open(this.file.externalRootDirectory + pdfName, 'application/pdf').then(resp => {
-              // 
-            }, err => {
-              console.error('fileopenerError::::::::::::::::::::::::\n', err)
-              this.commonService.presentToast('fileopenerError')
-            })
+  downloadPdf() {
+    const pdfName = "report_" + new Date().toLocaleDateString() + ".pdf";
+    if (this.plt.is('cordova')) {
+      this.pdfObj.getBuffer((buffer) => {
+        const blob = new Blob([buffer], { type: 'application/pdf' });
+        this.file.writeFile(this.file.externalRootDirectory, pdfName, blob, { replace: true }).then(fileEntry => {
+          this.fileopener.open(this.file.externalRootDirectory + pdfName, 'application/pdf').then(resp => {
+            // 
           }, err => {
-            console.error('fileEntryError::::::::::::::::::::::::\n', err)
-            this.commonService.presentToast('fileEntryError')
+            console.error('fileopenerError::::::::::::::::::::::::\n', err)
+            this.commonService.presentToast('fileopenerError')
           })
-        });
-      } else {
-        // On a browser simply use download!
-        this.pdfObj.download();
-      }
-    } 
+        }, err => {
+          console.error('fileEntryError::::::::::::::::::::::::\n', err)
+          this.commonService.presentToast('fileEntryError')
+        })
+      });
+    } else {
+      // On a browser simply use download!
+      this.pdfObj.download();
+    }
   }
+}
   // end: end of device details printout

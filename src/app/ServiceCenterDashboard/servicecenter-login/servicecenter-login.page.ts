@@ -26,10 +26,10 @@ export class ServicecenterLoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   submit(formValue) {
-    this.database.serviceCenterIsValidUser(formValue).subscribe(
+    this.database.serviceCenterIsValidUser(formValue).then(
       (serviceCenterloginResp: any) => {
         console.log("my cust response:::::::\n", serviceCenterloginResp);
         if (!serviceCenterloginResp.Success) {

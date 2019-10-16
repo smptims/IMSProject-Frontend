@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { DatabaseService } from "../../services/database/database.service";
 import { CommonService } from "../../services/common/common.service";
 import { Router } from "@angular/router";
@@ -26,17 +31,17 @@ export class CustomerLoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   submit(formValue) {
-    this.database.customerIsValidUser(formValue).subscribe(
+    this.database.customerIsValidUser(formValue).then(
       (customerloginResp: any) => {
         console.log("my cust response:::::::\n", customerloginResp);
         if (!customerloginResp.Success) {
           this.commonService.presentToast(customerloginResp.ErrorMessage);
         } else {
           this.commonService.presentToast(customerloginResp.Message);
-          console.log("my resp:::::::\n", customerloginResp + formValue);
+          console.log("my resp:::::::\n", customerloginResp, "\n", formValue);
           this.menuCtrl.enable(true);
           localStorage.setItem("user", customerloginResp.user);
           localStorage.setItem(
@@ -49,6 +54,7 @@ export class CustomerLoginPage implements OnInit {
       customerloginErr => {
         console.log("customerloginErr:::::::::::\n", customerloginErr);
         this.commonService.presentToast(" Error while calling API");
+        alert(JSON.stringify(customerloginErr));
       }
     );
   }

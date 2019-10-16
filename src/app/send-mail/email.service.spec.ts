@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EmailService } from './email.service';
+import { EmailService } from '../send-mail/email.service';
 
 describe('EmailService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

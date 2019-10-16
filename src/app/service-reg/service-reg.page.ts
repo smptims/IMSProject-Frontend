@@ -14,12 +14,12 @@ export class ServiceRegPage implements OnInit {
 
   public serviceCenterUsers: Array<any> = [];
   public serviceCenterForm: FormGroup;
-  constructor(private database: DatabaseService, 
-              private formBuilder: FormBuilder, 
-              private router: Router, 
-              private commonService: CommonService
-              ) {
-      this.serviceCenterForm = this.formBuilder.group({
+  constructor(private database: DatabaseService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService
+  ) {
+    this.serviceCenterForm = this.formBuilder.group({
       customer_name: ['', Validators.compose([Validators.required])],
       company_name: ['', Validators.compose([Validators.required])],
       sc_emp_no: ['', Validators.compose([Validators.required])],
@@ -33,7 +33,7 @@ export class ServiceRegPage implements OnInit {
   }
 
   createServiceCenterUsersSubmit(body: serviceCenterUsersType) {
-    this.database.createServiceCenterUsers(body).subscribe((createServiceCenterUsersResp: any) => {
+    this.database.createServiceCenterUsers(body).then((createServiceCenterUsersResp: any) => {
       console.log('createServiceCenterUsersResp:::::::::::::\n', createServiceCenterUsersResp)
       if (createServiceCenterUsersResp.Success) {
         this.commonService.presentToast('Successfully Created Service Center User Details')

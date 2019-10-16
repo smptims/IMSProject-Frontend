@@ -15,29 +15,29 @@ export class DeviceDetailsCreatePage implements OnInit {
   public createDeviceDetails: Array<any> = [];
   public createDeviceDetailsForm: FormGroup;
 
-  constructor( private database: DatabaseService, private formBuilder: FormBuilder, 
-    private router: Router, private commonService: CommonService) { 
+  constructor(private database: DatabaseService, private formBuilder: FormBuilder,
+    private router: Router, private commonService: CommonService) {
 
-      this.createDeviceDetailsForm = this.formBuilder.group({
-        pcsd_seq_no: ['', Validators.compose([Validators.required])],
-        customer_no: ['', Validators.compose([Validators.required])],
-        device_no: ['', Validators.compose([Validators.required])],
-        vehicle_regd_no: ['', Validators.compose([Validators.required, Validators.email])],
-        vehicle_location: ['', Validators.compose([Validators.required])],
-        installed_by_sc_emp_no: ['', Validators.compose([Validators.required])],
-        installed_date_time: ['', Validators.compose([Validators.required])],
-        installation_verified_by: ['', Validators.compose([Validators.required])],
-        warrenty_dt: ['', Validators.compose([Validators.required])],
-        status: ['', Validators.compose([Validators.required, Validators.email])]
-        
-      })
-     }
+    this.createDeviceDetailsForm = this.formBuilder.group({
+      pcsd_seq_no: ['', Validators.compose([Validators.required])],
+      customer_no: ['', Validators.compose([Validators.required])],
+      device_no: ['', Validators.compose([Validators.required])],
+      vehicle_regd_no: ['', Validators.compose([Validators.required, Validators.email])],
+      vehicle_location: ['', Validators.compose([Validators.required])],
+      installed_by_sc_emp_no: ['', Validators.compose([Validators.required])],
+      installed_date_time: ['', Validators.compose([Validators.required])],
+      installation_verified_by: ['', Validators.compose([Validators.required])],
+      warrenty_dt: ['', Validators.compose([Validators.required])],
+      status: ['', Validators.compose([Validators.required, Validators.email])]
+
+    })
+  }
 
   ngOnInit() {
   }
 
   createDeviceDetailsSubmit(body: DeviceDetailsType) {
-    this.database.createDeviceDetail(body).subscribe((createDeviceDetailResp: any) => {
+    this.database.createDeviceDetail(body).then((createDeviceDetailResp: any) => {
       console.log('createDeviceDetailResp:::::::::::::\n', createDeviceDetailResp)
       if (createDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Created Device Details')

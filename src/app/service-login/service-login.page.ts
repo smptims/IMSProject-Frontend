@@ -13,22 +13,22 @@ export class ServiceLoginPage implements OnInit {
 
   public credentails: FormGroup;
 
-  constructor(private database: DatabaseService, 
-              private formBuilder: FormBuilder, 
-              private router: Router, 
-              private commonService: CommonService) { 
-              
-      this.credentails = this.formBuilder.group({
-        username: ['', Validators.compose([Validators.required])],
-        password: ['', Validators.compose([Validators.required])]
-      })
+  constructor(private database: DatabaseService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService) {
+
+    this.credentails = this.formBuilder.group({
+      username: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])]
+    })
   }
 
   ngOnInit() {
   }
 
   submit(formValue) {
-    this.database.isValidUser(formValue).subscribe((serviceloginResp: any) => {
+    this.database.isValidUser(formValue).then((serviceloginResp: any) => {
       console.log('my response:::::::\n', serviceloginResp + formValue)
       if (!serviceloginResp.Success) {
         this.commonService.presentToast(serviceloginResp.ErrorMessage);
@@ -40,7 +40,7 @@ export class ServiceLoginPage implements OnInit {
       this.commonService.presentToast(" Error while calling API");
     });
   }
-  
+
   navToForgetPassword() {
     this.router.navigate(['/forgetpass'])
   }

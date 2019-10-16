@@ -15,7 +15,7 @@ export class CustomerDashboardPage implements OnInit {
 
   ngOnInit() {
     this.menuCtrl.enable(true)
-    this.databaseService.getDeviceDetails().subscribe((deviceDtlResp: any) => {
+    this.databaseService.getDeviceDetails().then((deviceDtlResp: any) => {
       this.deviceDtlsLength = deviceDtlResp.data.length
     }, deviceDtlErr => {
       console.error('Error over deviceDtlErr::::::::::::::::\n', deviceDtlErr)

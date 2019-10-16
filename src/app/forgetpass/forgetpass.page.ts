@@ -34,7 +34,7 @@ export class ForgetpassPage implements OnInit {
     this.randomNumber = Math.floor(1000 + Math.random() * 9000);
     console.log(this.randomNumber);
     // let mobileNumber = mobileNumberFormValue.mobile;
-    // this.database.generateOTP(mobileNumber).subscribe((generateOTPResp: any) => {
+    // this.database.generateOTP(mobileNumber).then((generateOTPResp: any) => {
     //   console.log('my response:::::::\n', generateOTPResp)
     //   if (!generateOTPResp.Success) {
     //     this.commonService.presentToast(generateOTPResp.ErrorMessage);
@@ -50,7 +50,7 @@ export class ForgetpassPage implements OnInit {
   confirmOTP(forgetPasswordFormValue) {
     if (forgetPasswordFormValue.otp == this.randomNumber) {
       console.log("Otp mached");
-      this.database.isUSerPresent(forgetPasswordFormValue.adminid).subscribe((userResp: Array<any>) => {
+      this.database.isUSerPresent(forgetPasswordFormValue.adminid).then((userResp: Array<any>) => {
         if (userResp == [] || userResp.length === 0) {
           this.commonService.presentToast('User not find')
         } else if (userResp[0].au_seq_no == forgetPasswordFormValue.adminid) {

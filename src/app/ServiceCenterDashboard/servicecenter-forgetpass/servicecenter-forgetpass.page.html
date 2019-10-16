@@ -18,14 +18,14 @@
             </ion-card-title>
           </ion-card-header>
           <ion-card-content class="ion-text-center mrg-btm--10" *ngIf="!otpStatus">
-            <form class="mrg-btm--10" [formGroup]="serviceCenterMobileNumberForm" (submit)="sendOTP(serviceCenterMobileNumberFormValue.value)">
+            <form class="mrg-btm--10" [formGroup]="servicecenterMobileNumberForm" (submit)="sendOTP(servicecenterMobileNumberForm.value)">
               <ion-item class="nopadh_tp border-btm">
                 <ion-label position="floating" class="font-12">Mobile</ion-label>
                 <ion-input class="nopadh_tp" type="tel" formControlName="customermobile">
                 </ion-input>
               </ion-item>
               <div class="text-center ion-margin-vertical">
-                <ion-button type="submit" color="secondary" [disabled]="!serviceCenterMobileNumberForm.valid" shape="round">Generate
+                <ion-button type="submit" color="secondary" [disabled]="!servicecenterMobileNumberForm.valid" shape="round">Generate
                   OTP</ion-button>
               </div>
             </form>

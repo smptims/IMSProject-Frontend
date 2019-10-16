@@ -40,7 +40,7 @@ export class CustomerEditPage implements OnInit {
   }
 
   editCustomerUserSubmit(body: customerUsersType) {
-    this.database.updateCustomerUsers(body).subscribe((updateCustomerUsersResp: any) => {
+    this.database.updateCustomerUsers(body).then((updateCustomerUsersResp: any) => {
       console.log('updateCustomerUsersResp:::::::::::::\n', updateCustomerUsersResp)
       if (updateCustomerUsersResp.Success) {
         this.commonService.presentToast('Successfully Updated Customer Users Details')

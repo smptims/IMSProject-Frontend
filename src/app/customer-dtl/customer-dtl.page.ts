@@ -14,7 +14,7 @@ export class CustomerDtlPage implements OnInit {
   public customerDtl: Array<customerUsersType> = [];
   public customers: Array<customerUsersType> = [];
   public inputToSearch: string = '';
-  public status:string = 'ALL';
+  public status: string = 'ALL';
 
   constructor(private database: DatabaseService, private router: Router, private commonService: CommonService, public modalController: ModalController) { }
 
@@ -43,22 +43,22 @@ export class CustomerDtlPage implements OnInit {
 
   customerUserOnStatus() {
     this.customers = this.customerDtl.filter(item => {
-      return  item.status === this.status;
+      return item.status === this.status;
     })
     if (this.status === 'ALL') {
-        this.customers = this.customerDtl;  
+      this.customers = this.customerDtl;
     }
   }
-  
+
   // 2.0 to display Customer User details
   getCustomerUsers() {
-    this.database.getCustomerUsers().subscribe((getCustomerUsersResp: any) => {
+    this.database.getCustomerUsers().then((getCustomerUsersResp: any) => {
       this.customerDtl = getCustomerUsersResp.data;
       // Remove 
       this.customerDtl.forEach((item: customerUsersType) => {
         item.status = item.status === 'ACTIVE' ? 'ACTIVE' : 'INACTIVE';
       })
-      this.customerUserOnStatus() ;
+      this.customerUserOnStatus();
     }, customerUsersError => {
       console.error('customerUsersError:::::::::::::::::::\n', customerUsersError);
     });
@@ -67,10 +67,10 @@ export class CustomerDtlPage implements OnInit {
   // 3.0 to update Customer User details
   updateCustomerUsers(item: customerUsersType) {
     item.status = item.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
-    this.database.updateCustomerUsers(item).subscribe((updateCustomerUsersResp: any) => {
+    this.database.updateCustomerUsers(item).then((updateCustomerUsersResp: any) => {
       if (updateCustomerUsersResp.Success) {
         this.commonService.presentToast('Successfully Updated Customer User details')
-        this.getCustomerUsers() ;
+        this.getCustomerUsers();
       } else {
         this.commonService.presentToast('1.0 Error while updating Customer User details')
       }
@@ -81,7 +81,7 @@ export class CustomerDtlPage implements OnInit {
   }
 
   deleteCustomerUsers(idToDelete: any) {
-    this.database.deleteCustomerUsers(idToDelete).subscribe((deleteCustomerUsersResp: any) => {
+    this.database.deleteCustomerUsers(idToDelete).then((deleteCustomerUsersResp: any) => {
       if (deleteCustomerUsersResp.Success) {
         this.commonService.presentToast(deleteCustomerUsersResp.Message)
         this.getCustomerUsers();
@@ -111,6 +111,6 @@ export class CustomerDtlPage implements OnInit {
     if (this.inputToSearch.length === 0) {
       this.getCustomerUsers();
     }
-  }  
+  }
 
 }

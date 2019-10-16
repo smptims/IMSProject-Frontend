@@ -14,20 +14,20 @@ export class ServicecenterResetpasswordPage implements OnInit {
   public resetServiceCenterPasswordForm: FormGroup;
   public user: any = {};
 
-  constructor(private database: DatabaseService, 
-              private formBuilder: FormBuilder, 
-              private router: Router, 
-              private commonService: CommonService
-              ) { 
+  constructor(private database: DatabaseService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService
+  ) {
 
-                const navigation = this.router.getCurrentNavigation();
-                this.user = navigation.extras.state
-                this.resetServiceCenterPasswordForm = this.formBuilder.group({
-                  password: [null, Validators.compose([Validators.required])],
-                  confirmpassword: [null, Validators.compose([Validators.required])]
-                })
-  
-              }
+    const navigation = this.router.getCurrentNavigation();
+    this.user = navigation.extras.state
+    this.resetServiceCenterPasswordForm = this.formBuilder.group({
+      password: [null, Validators.compose([Validators.required])],
+      confirmpassword: [null, Validators.compose([Validators.required])]
+    })
+
+  }
 
   ngOnInit() {
   }
@@ -36,7 +36,7 @@ export class ServicecenterResetpasswordPage implements OnInit {
     if (resetServiceCenterPasswordFormvalue.password == resetServiceCenterPasswordFormvalue.confirmpassword) {
       this.user.password = resetServiceCenterPasswordFormvalue.password;
       console.log("password updated successfully");
-      this.database.updateServieCenterUser(this.user).subscribe((updateUserResp: any) => {
+      this.database.updateServieCenterUser(this.user).then((updateUserResp: any) => {
         if (updateUserResp.Message == "updated details" && updateUserResp.Success === true) {
           this.resetServiceCenterPasswordForm.reset();
           this.router.navigate(['servicecenter-login'])

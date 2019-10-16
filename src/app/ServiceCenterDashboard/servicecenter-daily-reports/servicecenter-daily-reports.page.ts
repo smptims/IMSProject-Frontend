@@ -32,23 +32,23 @@ export class ServicecenterDailyReportsPage implements OnInit {
   public serviceCenterDeviceStatusRptForm: FormGroup;
 
   constructor(
-              private database: DatabaseService,
-              private router: Router,
-              public navCtrl: NavController,
-              private formBuilder: FormBuilder,
-              public plt: Platform,
-              private commonService: CommonService,
-              public modalController: ModalController,
-              public browserModule: BrowserModule,
-              public errorHandler: ErrorHandler,
-              public file: File,
-              public fileopener: FileOpener
-              ) { 
-                this.serviceCenterDeviceStatusRptForm = this.formBuilder.group({
-                  start_dt: ['', Validators.compose([])],
-                  end_dt: ['', Validators.compose([])]
-                  })
-                }
+    private database: DatabaseService,
+    private router: Router,
+    public navCtrl: NavController,
+    private formBuilder: FormBuilder,
+    public plt: Platform,
+    private commonService: CommonService,
+    public modalController: ModalController,
+    public browserModule: BrowserModule,
+    public errorHandler: ErrorHandler,
+    public file: File,
+    public fileopener: FileOpener
+  ) {
+    this.serviceCenterDeviceStatusRptForm = this.formBuilder.group({
+      start_dt: ['', Validators.compose([])],
+      end_dt: ['', Validators.compose([])]
+    })
+  }
 
   ngOnInit() {
   }
@@ -99,7 +99,7 @@ export class ServicecenterDailyReportsPage implements OnInit {
 
 
   getServiceCenterDeviceDetails(formValue) {
-    this.database.getDeviceInstalledStatusDetails(formValue.start_dt, formValue.end_dt).subscribe((deviceDetailsResp: any) => {
+    this.database.getDeviceInstalledStatusDetails(formValue.start_dt, formValue.end_dt).then((deviceDetailsResp: any) => {
       this.deviceDetails = deviceDetailsResp.data;
       console.log(this.deviceDetails);
       this.generatePDF();
@@ -111,7 +111,7 @@ export class ServicecenterDailyReportsPage implements OnInit {
 
   generatePDF() {
     let dataToPrint = [];
-    for (let i = 0; i <this.deviceDetails.length; i++) {
+    for (let i = 0; i < this.deviceDetails.length; i++) {
       dataToPrint.push([this.deviceDetails[i].did_seq_no, this.deviceDetails[i].customer_no, this.deviceDetails[i].device_no, this.deviceDetails[i].vehicle_regd_no])
     }
     let pdfContent = {
@@ -127,7 +127,7 @@ export class ServicecenterDailyReportsPage implements OnInit {
           }
         }
       ]
-      }
+    }
     this.pdfObj = pdfMake.createPdf(pdfContent);
     this.downloadPdf();
   }

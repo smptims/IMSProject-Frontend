@@ -27,7 +27,7 @@ export class CustomerRegPage implements OnInit {
   }
 
   createCustomerRegDetails(body: customerUsersType) {
-    this.database.createCustomerRegDetails(body).subscribe((createCustomerRegDetailsResp: any) => {
+    this.database.createCustomerRegDetails(body).then((createCustomerRegDetailsResp: any) => {
       console.log('createCustomerRegDetailsResp:::::::::::::\n', createCustomerRegDetailsResp)
       if (createCustomerRegDetailsResp.Success) {
         this.commonService.presentToast('Successfully Created Customer Details')

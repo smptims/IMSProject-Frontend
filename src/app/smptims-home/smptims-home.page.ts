@@ -13,7 +13,7 @@ export class SmptimsHomePage implements OnInit {
     private router: Router,
     private events: Events,
     private menuCtrl: MenuController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.menuCtrl.enable(false);

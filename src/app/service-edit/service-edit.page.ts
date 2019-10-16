@@ -18,29 +18,29 @@ export class ServiceEditPage implements OnInit {
 
   constructor(
     private database: DatabaseService,
-    private formBuilder: FormBuilder, 
-    private router: Router, 
+    private formBuilder: FormBuilder,
+    private router: Router,
     private commonService: CommonService
-    ) { 
-        this.serviceCenterUserForm = this.formBuilder.group({
-          sc_seq_no    : ['', Validators.compose([Validators.required])],
-          sc_emp_no    : ['', Validators.compose([Validators.required])],
-          username     : ['', Validators.compose([Validators.required])],
-          customer_name: ['', Validators.compose([Validators.required])],
-          company_name : ['', Validators.compose([Validators.required])],
-          password     : ['', Validators.compose([Validators.required])],
-          email        : ['', Validators.compose([Validators.required, Validators.email])],
-          phone_no     : ['', Validators.compose([Validators.required])],
-          address      : ['', Validators.compose([])],
-          location     : ['', Validators.compose([Validators.required])],
-          pincode_zip  : ['', Validators.compose([])],        
-          country      : ['', Validators.compose([])],
-          status       : ['', Validators.compose([Validators.required])] 
-          
-                 
-      });
-      const navigation = this.router.getCurrentNavigation();
-      this.serviceCenterUserForm.patchValue(navigation.extras.state);
+  ) {
+    this.serviceCenterUserForm = this.formBuilder.group({
+      sc_seq_no: ['', Validators.compose([Validators.required])],
+      sc_emp_no: ['', Validators.compose([Validators.required])],
+      username: ['', Validators.compose([Validators.required])],
+      customer_name: ['', Validators.compose([Validators.required])],
+      company_name: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      phone_no: ['', Validators.compose([Validators.required])],
+      address: ['', Validators.compose([])],
+      location: ['', Validators.compose([Validators.required])],
+      pincode_zip: ['', Validators.compose([])],
+      country: ['', Validators.compose([])],
+      status: ['', Validators.compose([Validators.required])]
+
+
+    });
+    const navigation = this.router.getCurrentNavigation();
+    this.serviceCenterUserForm.patchValue(navigation.extras.state);
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class ServiceEditPage implements OnInit {
 
 
   editServiceCenterUsersSubmit(body: serviceCenterUsersType) {
-    this.database.updateServiceCenterUsers(body).subscribe((updateServiceCenterUsersResp: any) => {
+    this.database.updateServiceCenterUsers(body).then((updateServiceCenterUsersResp: any) => {
       console.log('updateServiceCenterUsersResp:::::::::::::\n', updateServiceCenterUsersResp)
       if (updateServiceCenterUsersResp.Success) {
         this.commonService.presentToast('Successfully Updated Service Center Users Details')

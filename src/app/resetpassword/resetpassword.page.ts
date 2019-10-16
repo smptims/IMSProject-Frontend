@@ -28,7 +28,7 @@ export class ResetpasswordPage implements OnInit {
   savePassword(restPasswordFormvalue) {
     if (restPasswordFormvalue.password == restPasswordFormvalue.confirmpassword) {
       this.user.password = restPasswordFormvalue.password;
-      this.database.updateUser(this.user).subscribe((updateUserResp: any) => {
+      this.database.updateUser(this.user).then((updateUserResp: any) => {
         if (updateUserResp.Message == "updated details" && updateUserResp.Success === true) {
           this.restPasswordForm.reset();
           this.router.navigate(['login'])

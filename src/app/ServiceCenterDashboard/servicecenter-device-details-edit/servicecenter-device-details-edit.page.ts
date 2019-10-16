@@ -16,33 +16,33 @@ export class ServicecenterDeviceDetailsEditPage implements OnInit {
   public editDeviceDetailsForm: FormGroup;
 
   constructor(private database: DatabaseService,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private commonService: CommonService
-              ) { 
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService
+  ) {
 
-                this.editDeviceDetailsForm = this.formBuilder.group({
-                      did_seq_no: ['', Validators.compose([Validators.required])],
-                      pcsd_seq_no: ['', Validators.compose([Validators.required])],
-                      customer_no: ['', Validators.compose([Validators.required])],
-                      device_no: ['', Validators.compose([Validators.required])],
-                      vehicle_regd_no: ['', Validators.compose([Validators.required])],
-                      vehicle_location: ['', Validators.compose([Validators.required])],
-                      installed_by_sc_emp_no: ['', Validators.compose([Validators.required])],
-                      installed_date_time: ['', Validators.compose([Validators.required])],
-                      installation_verified_by: ['', Validators.compose([Validators.required])],
-                      warranty_dt: ['', Validators.compose([])],
-                      status: ['', Validators.compose([Validators.required])]
-                });
-                const navigation = this.router.getCurrentNavigation();
-                this.editDeviceDetailsForm.patchValue(navigation.extras.state);
-              }
+    this.editDeviceDetailsForm = this.formBuilder.group({
+      did_seq_no: ['', Validators.compose([Validators.required])],
+      pcsd_seq_no: ['', Validators.compose([Validators.required])],
+      customer_no: ['', Validators.compose([Validators.required])],
+      device_no: ['', Validators.compose([Validators.required])],
+      vehicle_regd_no: ['', Validators.compose([Validators.required])],
+      vehicle_location: ['', Validators.compose([Validators.required])],
+      installed_by_sc_emp_no: ['', Validators.compose([Validators.required])],
+      installed_date_time: ['', Validators.compose([Validators.required])],
+      installation_verified_by: ['', Validators.compose([Validators.required])],
+      warranty_dt: ['', Validators.compose([])],
+      status: ['', Validators.compose([Validators.required])]
+    });
+    const navigation = this.router.getCurrentNavigation();
+    this.editDeviceDetailsForm.patchValue(navigation.extras.state);
+  }
 
   ngOnInit() {
   }
 
   editDeviceDetailsSubmit(body: DeviceDetailsType) {
-    this.database.updateDeviceDetail(body).subscribe((updateDeviceDetailResp: any) => {
+    this.database.updateDeviceDetail(body).then((updateDeviceDetailResp: any) => {
       console.log('updateDeviceDetailResp:::::::::::::\n', updateDeviceDetailResp)
       if (updateDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Updated Device Details')

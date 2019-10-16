@@ -14,6 +14,7 @@ import { File } from "@ionic-native/file/ngx";
 import { FileOpener } from "@ionic-native/file-opener/ngx";
 import { EmailProvider } from "./send-mail/email.service";
 import { ImageProvider } from "./send-mail/image.service";
+import { HTTP } from "@ionic-native/http/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,8 +39,9 @@ import { ImageProvider } from "./send-mail/image.service";
     EmailComposer,
     EmailProvider,
     ImageProvider,
+	HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

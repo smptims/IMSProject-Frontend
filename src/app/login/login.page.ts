@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
   }
 
   submit(formValue) {
-    this.database.isValidUser(formValue).subscribe(
+    this.database.isValidUser(formValue).then(
       (loginResp: any) => {
         console.log("my response:::::::\n", loginResp + formValue);
         if (!loginResp.Success) {

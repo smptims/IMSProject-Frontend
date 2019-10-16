@@ -41,7 +41,7 @@ export class DeviceDetailsEditPage implements OnInit {
   }
 
   editDeviceDetailsSubmit(body: DeviceDetailsType) {
-    this.database.updateDeviceDetail(body).subscribe((updateDeviceDetailResp: any) => {
+    this.database.updateDeviceDetail(body).then((updateDeviceDetailResp: any) => {
       console.log('updateDeviceDetailResp:::::::::::::\n', updateDeviceDetailResp)
       if (updateDeviceDetailResp.Success) {
         this.commonService.presentToast('Successfully Updated Device Details')

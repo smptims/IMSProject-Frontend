@@ -16,19 +16,19 @@ export class ServicecenterForgetpassPage implements OnInit {
   public otpStatus: boolean = false;
   public randomNumber: number = 0;
 
-  constructor(private database: DatabaseService, 
-              private formBuilder: FormBuilder, 
-              private router: Router, 
-              private commonService: CommonService
-              ) { 
-                this.servicecenterMobileNumberForm = this.formBuilder.group({
-                  servicecentermobile: [null, Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10)])]
-                })
-                this.servicecenterForgetPasswordForm = this.formBuilder.group({
-                  otp: [null, Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
-                  servicecenterno: [null, Validators.compose([Validators.required])]
-                })
-              }
+  constructor(private database: DatabaseService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private commonService: CommonService
+  ) {
+    this.servicecenterMobileNumberForm = this.formBuilder.group({
+      servicecentermobile: [null, Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10)])]
+    })
+    this.servicecenterForgetPasswordForm = this.formBuilder.group({
+      otp: [null, Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
+      servicecenterno: [null, Validators.compose([Validators.required])]
+    })
+  }
   ngOnInit() {
   }
 
@@ -37,7 +37,7 @@ export class ServicecenterForgetpassPage implements OnInit {
     this.randomNumber = Math.floor(1000 + Math.random() * 9000);
     console.log(this.randomNumber);
     // let mobileNumber = serviceCenterMobileNumberFormValue.servicecentermobile;
-    // this.database.generateOTP(mobileNumber).subscribe((generateOTPResp: any) => {
+    // this.database.generateOTP(mobileNumber).then((generateOTPResp: any) => {
     //   console.log('my response:::::::\n', generateOTPResp)
     //   if (!generateOTPResp.Success) {
     //     this.commonService.presentToast(generateOTPResp.ErrorMessage);
@@ -53,7 +53,7 @@ export class ServicecenterForgetpassPage implements OnInit {
   confirmOTP(servicecenterForgetPasswordFormValue) {
     if (servicecenterForgetPasswordFormValue.otp == this.randomNumber) {
       console.log("Otp mached");
-      this.database.isServiceCenterUSerPresent(servicecenterForgetPasswordFormValue.servicecenterno).subscribe((serviceCenterUserResp: Array<any>) => {
+      this.database.isServiceCenterUSerPresent(servicecenterForgetPasswordFormValue.servicecenterno).then((serviceCenterUserResp: Array<any>) => {
         console.log("Otp mached successfully", serviceCenterUserResp);
         if (serviceCenterUserResp == [] || serviceCenterUserResp.length === 0) {
           this.commonService.presentToast("User not found")

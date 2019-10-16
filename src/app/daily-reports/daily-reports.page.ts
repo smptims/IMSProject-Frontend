@@ -96,7 +96,7 @@ export class DailyReportsPage implements OnInit {
   }
 
   getDeviceDetails(formValue) {
-    this.database.getDeviceInstalledStatusDetails(formValue.start_dt, formValue.end_dt).subscribe((deviceDetailsResp: any) => {
+    this.database.getDeviceInstalledStatusDetails(formValue.start_dt, formValue.end_dt).then((deviceDetailsResp: any) => {
       this.deviceDetails = deviceDetailsResp.data;
       console.log(this.deviceDetails);
       this.generatePDF();
@@ -107,7 +107,7 @@ export class DailyReportsPage implements OnInit {
 
   generatePDF() {
     let dataToPrint = [];
-    for (let i = 0; i <this.deviceDetails.length; i++) {
+    for (let i = 0; i < this.deviceDetails.length; i++) {
       dataToPrint.push([this.deviceDetails[i].did_seq_no, this.deviceDetails[i].customer_no, this.deviceDetails[i].device_no, this.deviceDetails[i].vehicle_regd_no])
     }
     let pdfContent = {
@@ -123,7 +123,7 @@ export class DailyReportsPage implements OnInit {
           }
         }
       ]
-      }
+    }
     this.pdfObj = pdfMake.createPdf(pdfContent);
     this.downloadPdf();
   }
