@@ -30,7 +30,7 @@ export class DatabaseService {
       const username = formValue.username;
       const password = formValue.password;
       const url = this.configURL.ADMIN_USERS + username + "/" + password;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -47,14 +47,14 @@ export class DatabaseService {
   //   const password = formValue.password;
   //   return this.http.get(
   //     this.configURL.ADMIN_USERS + username + "/" + password,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   isUSerPresent(username: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.ADMIN_USERS + username;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -73,7 +73,7 @@ export class DatabaseService {
   createUser(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.ADMIN_USERS;
-      this.nativeHTTP.post(url, body, this.headers()).then(
+      this.nativeHTTP.post(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -92,7 +92,7 @@ export class DatabaseService {
   updateUser(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.ADMIN_USERS;
-      this.nativeHTTP.put(url, body, this.headers()).then(
+      this.nativeHTTP.put(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -115,7 +115,7 @@ export class DatabaseService {
     return new Promise((resolve, reject) => {
       const adminid = formValue.adminid;
       const url = this.configURL.GENERATE_OTP + adminid;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -135,7 +135,7 @@ export class DatabaseService {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SEND_SMS + phoneNumber + "/" + message;
       const body = {};
-      this.nativeHTTP.get(url, body, this.headers()).then(
+      this.nativeHTTP.get(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -154,7 +154,7 @@ export class DatabaseService {
   getDeviceDetails() {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_DETAILS;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -172,7 +172,7 @@ export class DatabaseService {
   getDeviceInstalledStatusDetails(idFromDate: any, idToDate: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate + "/" + idToDate;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -187,14 +187,14 @@ export class DatabaseService {
   // getDeviceInstalledStatusDetails(idFromDate: any, idToDate: any) {
   //   return this.http.get(
   //     this.configURL.DEVICE_INSTALLED_STATUS_RPT + idFromDate + "/" + idToDate,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   getDeviceDetailsByID(idToGetData: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_DETAILS + idToGetData;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -209,14 +209,14 @@ export class DatabaseService {
   // getDeviceDetailsByID(idToGetData: any) {
   //   return this.http.get(
   //     this.configURL.DEVICE_DETAILS + idToGetData,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   createDeviceDetail(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_DETAILS;
-      this.nativeHTTP.post(url, body, this.headers()).then(
+      this.nativeHTTP.post(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -234,7 +234,7 @@ export class DatabaseService {
   updateDeviceDetail(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_DETAILS;
-      this.nativeHTTP.put(url, body, this.headers()).then(
+      this.nativeHTTP.put(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -253,7 +253,7 @@ export class DatabaseService {
   deleteDeviceDetail(idToDelete: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.DEVICE_DETAILS + idToDelete;
-      this.nativeHTTP.delete(url, {}, this.headers()).then(
+      this.nativeHTTP.delete(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -268,7 +268,7 @@ export class DatabaseService {
   // deleteDeviceDetail(idToDelete) {
   //   return this.http.delete(
   //     this.configURL.DEVICE_DETAILS + idToDelete,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
@@ -278,7 +278,7 @@ export class DatabaseService {
   getAdminProfileDetails(idToDisplay: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.ADMIN_USERS + idToDisplay;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -292,7 +292,7 @@ export class DatabaseService {
   // getAdminProfileDetails(idToDisplay: any) {
   //   return this.http.get(
   //     this.configURL.ADMIN_USERS + idToDisplay,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
@@ -305,7 +305,7 @@ export class DatabaseService {
       const username = formValue.username;
       const password = formValue.password;
       const url = this.configURL.CUST_USERS + username + "/" + password;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -333,7 +333,7 @@ export class DatabaseService {
     // return this.http.post(
     //   this.configURL.CUST_USERS,
     //   customerUserDetails,
-    //   this.headers()
+    //   {})
     // );
   }
 
@@ -368,7 +368,7 @@ export class DatabaseService {
     });
     // return this.http.get(
     //   this.configURL.CUST_USERS + idToGetData,
-    //   this.headers()
+    //   {})
     // );
   }
 
@@ -403,7 +403,7 @@ export class DatabaseService {
     });
     // return this.http.delete(
     //   this.configURL.CUST_USERS + idToDelete,
-    //   this.headers()
+    //   {})
     // );
   }
 
@@ -426,7 +426,7 @@ export class DatabaseService {
     });
     // return this.http.get(
     //   this.configURL.CUST_USERS + idToDisplay,
-    //   this.headers()
+    //   {})
     // );
   }
 
@@ -470,7 +470,7 @@ export class DatabaseService {
     const password = formValue.password;
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS + username + "/" + password;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -487,13 +487,13 @@ export class DatabaseService {
   //   const password = formValue.password;
   //   return this.http.get(
   //     this.configURL.SERVICE_CENTER_USERS + username + "/" + password,
-  //     this.headers()
+  //     {})
   //   );
   // }
   createServiceCenterRegDetails(serviceUserDetails: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS;
-      this.nativeHTTP.post(url, serviceUserDetails, this.headers()).then(
+      this.nativeHTTP.post(url, serviceUserDetails, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -509,14 +509,14 @@ export class DatabaseService {
   //   return this.http.post(
   //     this.configURL.CUST_USERS,
   //     customerUserDetails,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   createServiceCenterUsers(serviceCenterUsers: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS;
-      this.nativeHTTP.post(url, serviceCenterUsers, this.headers()).then(
+      this.nativeHTTP.post(url, serviceCenterUsers, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -532,14 +532,14 @@ export class DatabaseService {
   //   return this.http.post(
   //     this.configURL.SERVICE_CENTER_USERS,
   //     serviceCenterUsers,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   getServiceCenterUsers() {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -558,7 +558,7 @@ export class DatabaseService {
   getServiceCenterDetailsByID(idToGetData: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS + idToGetData;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -573,14 +573,14 @@ export class DatabaseService {
   // getServiceCenterDetailsByID(idToGetData) {
   //   return this.http.get(
   //     this.configURL.SERVICE_CENTER_USERS + idToGetData,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   updateServiceCenterUsers(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS;
-      this.nativeHTTP.put(url, body, this.headers()).then(
+      this.nativeHTTP.put(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -596,14 +596,14 @@ export class DatabaseService {
   //   return this.http.put(
   //     this.configURL.SERVICE_CENTER_USERS,
   //     body,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   deleteServiceCenterUsers(idToDelete: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS + idToDelete;
-      this.nativeHTTP.delete(url, {}, this.headers()).then(
+      this.nativeHTTP.delete(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -618,7 +618,7 @@ export class DatabaseService {
   // deleteServiceCenterUsers(idToDelete) {
   //   return this.http.delete(
   //     this.configURL.SERVICE_CENTER_USERS + idToDelete,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
@@ -629,7 +629,7 @@ export class DatabaseService {
   createReferTravels(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.REFER_TRAVELS;
-      this.nativeHTTP.post(url, body, this.headers()).then(
+      this.nativeHTTP.post(url, body,{}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -651,7 +651,7 @@ export class DatabaseService {
   getServiceCenterProfileDetails(idToDisplay: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS + idToDisplay;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -666,14 +666,14 @@ export class DatabaseService {
   // getServiceCenterProfileDetails(idToDisplay: any) {
   //   return this.http.get(
   //     this.configURL.SERVICE_CENTER_USERS + idToDisplay,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   isServiceCenterUSerPresent(username: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS + username;
-      this.nativeHTTP.get(url, {}, this.headers()).then(
+      this.nativeHTTP.get(url, {}, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -688,14 +688,14 @@ export class DatabaseService {
   // isServiceCenterUSerPresent(username) {
   //   return this.http.get(
   //     this.configURL.SERVICE_CENTER_USERS + username,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
   updateServieCenterUser(body: any) {
     return new Promise((resolve, reject) => {
       const url = this.configURL.SERVICE_CENTER_USERS;
-      this.nativeHTTP.put(url, body, this.headers()).then(
+      this.nativeHTTP.put(url, body, {}).then(
         resp => {
           resolve(JSON.parse(resp.data));
         },
@@ -711,7 +711,7 @@ export class DatabaseService {
   //   return this.http.put(
   //     this.configURL.SERVICE_CENTER_USERS,
   //     body,
-  //     this.headers()
+  //     {})
   //   );
   // }
 
