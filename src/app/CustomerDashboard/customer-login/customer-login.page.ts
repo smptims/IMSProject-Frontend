@@ -31,7 +31,9 @@ export class CustomerLoginPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.menuCtrl.enable(false);
+  }
 
   submit(formValue) {
     this.database.customerIsValidUser(formValue).then(
@@ -40,6 +42,7 @@ export class CustomerLoginPage implements OnInit {
         if (!customerloginResp.Success) {
           this.commonService.presentToast(customerloginResp.ErrorMessage);
         } else {
+          this.customercredentails.reset();
           this.commonService.presentToast(customerloginResp.Message);
           console.log("my resp:::::::\n", customerloginResp, "\n", formValue);
           this.menuCtrl.enable(true);
@@ -48,7 +51,7 @@ export class CustomerLoginPage implements OnInit {
             "x-access-token",
             customerloginResp.x_access_token
           );
-          this.router.navigate(["/customer-dashboard"]);
+          this.router.navigateByUrl("/customer-dashboard");
         }
       },
       customerloginErr => {

@@ -1,16 +1,23 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu type="overlay">
+    <ion-menu type="push" style="--width: 270px !important;">
       <ion-content>
         <ion-row class="ion-margin-vertical">
           <ion-col size="12">
-            <ion-img src="assets/logo/logo.png" style="width:30%;margin:auto"></ion-img>
+            <ion-img src="assets/logo/logo.png" style="width:30%;margin:auto">
+            </ion-img>
           </ion-col>
         </ion-row>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.path]">
-              <ion-icon slot="start" [name]="p.icon" class="icon-padding" style="color:black"></ion-icon>
+              <ion-icon
+                slot="start"
+                [name]="p.icon"
+                class="icon-padding"
+                style="color:black"
+              >
+              </ion-icon>
               <ion-label>
                 {{ p.title }}
               </ion-label>

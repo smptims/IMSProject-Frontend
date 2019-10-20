@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DatabaseService } from '../../services/database/database.service';
-import { CommonService } from '../../services/common/common.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { DatabaseService } from "../../services/database/database.service";
+import { CommonService } from "../../services/common/common.service";
+import { Router } from "@angular/router";
 import { MenuController } from "@ionic/angular";
 
 @Component({
@@ -26,7 +26,9 @@ export class ServicecenterLoginPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.menuCtrl.enable(false);
+  }
 
   submit(formValue) {
     this.database.serviceCenterIsValidUser(formValue).then(
@@ -38,7 +40,7 @@ export class ServicecenterLoginPage implements OnInit {
           this.commonService.presentToast(serviceCenterloginResp.ErrorMessage);
           console.log("my resp:::::::\n", serviceCenterloginResp + formValue);
           this.menuCtrl.enable(true);
-          this.router.navigate(["/servicecenter-dashboard"]);
+          this.router.navigateByUrl("/servicecenter-dashboard");
         }
       },
       err => {

@@ -1,22 +1,19 @@
 // App Styles
 // ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These 
-// styles are for the entire app and not just one component. Additionally, this 
-// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
 
-
 @font-face {
-    font-family: poppins;
-    src: url(../assets/fontstyle/poppins.woff2);
-
+  font-family: poppins;
+  src: url(../assets/fontstyle/poppins.woff2);
 }
 
-
-*{
-    font-family: poppins;
+* {
+  font-family: poppins;
 }
 
 .cursor-pointer {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
